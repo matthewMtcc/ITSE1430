@@ -1,4 +1,4 @@
-﻿/* hello World
+﻿/* Hello World
  * Matthew Mcnatt
  */ 
 using System;

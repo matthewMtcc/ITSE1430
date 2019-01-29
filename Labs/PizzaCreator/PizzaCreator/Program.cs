@@ -17,7 +17,7 @@ namespace PizzaCreator
         private static bool meatHam = false;
         public const decimal MEAT_HAM_PRICE = 0.75m;
         private static bool meatPepperoni = false;
-        public const decimal MEAT_PEPPERONI_PRICES = 0.75m;
+        public const decimal MEAT_PEPPERONI_PRICE = 0.75m;
         private static bool meatSausage = false;
         public const decimal MEAT_SAUSAGE_PRICE = 0.75m;
 
@@ -148,6 +148,9 @@ namespace PizzaCreator
             GetCheeseOption();
             Makeline();
             GetDeliveryOption();
+
+            Console.WriteLine("\nYOUR PIZZA IS COMPLETE!");
+            DisplayOrder();
             
 
 
@@ -199,7 +202,7 @@ namespace PizzaCreator
             Console.WriteLine("Select an option again to deselect it.");
             Console.WriteLine($"(1) Bacon({MEAT_BACON_PRICE:C})");
             Console.WriteLine($"(2) Ham({MEAT_HAM_PRICE:C})");
-            Console.WriteLine($"(3) Pepperoni({MEAT_PEPPERONI_PRICES:C})");
+            Console.WriteLine($"(3) Pepperoni({MEAT_PEPPERONI_PRICE:C})");
             Console.WriteLine($"(4) Sausage({MEAT_SAUSAGE_PRICE:C})");
             Console.WriteLine("(5) CONTINUE");
             Makeline();
@@ -393,7 +396,7 @@ namespace PizzaCreator
             if (meatHam == true)
                 CurrentPrice = CurrentPrice + MEAT_HAM_PRICE;
             if (meatPepperoni == true)
-                CurrentPrice = CurrentPrice + MEAT_PEPPERONI_PRICES;
+                CurrentPrice = CurrentPrice + MEAT_PEPPERONI_PRICE;
             if (meatSausage == true)
                 CurrentPrice = CurrentPrice + MEAT_SAUSAGE_PRICE;
 
@@ -521,5 +524,60 @@ namespace PizzaCreator
         {
             Console.WriteLine("----------------------------------------");
         }
+
+        private static void DisplayOrder()
+        {
+            Console.WriteLine("\nORDER");
+            Makeline();
+            if (sizeSmall == true)
+                Console.WriteLine($"Small Pizza        {SIZE_SMALL_PRICE:C}"); //displays size with price
+            if (sizeMedium == true)
+                Console.WriteLine($"Medium Pizza       {SIZE_SMALL_PRICE:C}");
+            if (sizeLarge == true)
+                Console.WriteLine($"Large Pizza        {SIZE_SMALL_PRICE:C}");
+
+            if (PizzaDelivery == true)
+                Console.WriteLine($"Delivery           {PIZZA_DELIVERY_PRICE}"); //displays transport with price
+            if (PizzaTakeOut == true)
+                Console.WriteLine($"Take Out           {PIZZA_DELIVERY_PRICE}");
+
+            Console.WriteLine("Meats");
+            if ((meatBacon == false && meatHam == false) && (meatPepperoni == false && meatSausage == false)) //displays meat header and all meets selected
+                Console.WriteLine("   none");
+            if (meatBacon == true)
+                Console.WriteLine($"   bacon           {MEAT_BACON_PRICE:C}");
+            if (meatHam == true)
+                Console.WriteLine($"   Ham             {MEAT_HAM_PRICE:C}");
+            if (meatPepperoni == true)
+                Console.WriteLine($"   Pepperoni       {MEAT_PEPPERONI_PRICE:C}");
+            if (meatSausage == true)
+                Console.WriteLine($"   Sausage         {MEAT_BACON_PRICE:C}");
+
+            Console.WriteLine("Vegetables");
+            if ((vegetablesBlackOlives == false && vegetablesMushrooms == false) && (vegetablesOnions == false && vegetablesPeppers == false)) //displays vegi header and vegis selected.
+                Console.WriteLine("   none");
+            if (vegetablesBlackOlives == true)
+                Console.WriteLine($"   Black Olives    {VEGETABLES_BLACK_OLIVES_PRICE:C}");
+            if (vegetablesMushrooms == true)
+                Console.WriteLine($"   Mushrooms       {VEGETABLES_MUSHROOMS_PRICE:C}");
+            if (vegetablesOnions == true)
+                Console.WriteLine($"   Onions          {VEGETABLES_ONION_PRICE:C}");
+            if (vegetablesPeppers == true)
+                Console.WriteLine($"   Peppers         {VEGETABLES_PEPPERS_PRICE:C}");
+
+            Console.WriteLine("Sauce");
+            if (sauceTraditional == true)
+                Console.WriteLine($"  Traditional      {SAUCE_TRADITIONAL_PRICE:C}"); //displays sauce and price
+            if (sauceGarlic == true)
+                Console.WriteLine($"  Garlic           {SAUCE_GARLIC_PRICE:C}");
+            if (sauceOregano == true)
+                Console.WriteLine($"  Oregano          {SAUCE_TRADITIONAL_PRICE:C}");
+
+            Makeline();
+            Console.WriteLine($"Price              {CalculatePrice()}");
+
+
+        }
+
     }
 }

@@ -13,29 +13,48 @@ namespace PizzaCreator
     class Program
     {
         private static bool meatBacon = false; //flag variables for meats with const price decimals
+        public const decimal MEAT_BACON_PRICE= 0.75m;
         private static bool meatHam = false;
+        public const decimal MEAT_HAM_PRICE = 0.75m;
         private static bool meatPepperoni = false;
+        public const decimal MEAT_PEPPERONI_PRICES = 0.75m;
         private static bool meatSausage = false;
+        public const decimal MEAT_SAUSAGE_PRICE = 0.75m;
 
         private static bool vegetablesBlackOlives = false; //falg variables for vegetables with const price decimals
+        public const decimal VEGETABLES_BLACK_OLIVES_PRICE = 0.50m;
         private static bool vegetablesMushrooms = false;
+        public const decimal VEGETABLES_MUSHROOMS_PRICE = 0.50m;
         private static bool vegetablesOnions = false;
+        public const decimal VEGETABLES_ONION_PRICE = 0.50m;
         private static bool vegetablesPeppers = false;
+        public const decimal VEGETABLES_PEPPERS_PRICE = 0.50m;
 
         private static bool sauceTraditional = false; //flag variables for sauce with const price decimals
+        public const decimal SAUCE_TRADITIONAL_PRICE = 0.0m;
         private static bool sauceOregano = false;
+        public const decimal SAUCE_OREGANO_PRICE = 1.00m;
         private static bool sauceGarlic= false;
+        public const decimal SAUCE_GARLIC_PRICE = 1.00m;
 
         private static bool sizeSmall = false; //flag variables for sauce with const price decimals
+        public const decimal SIZE_SMALL_PRICE = 5.00m;
         private static bool sizeLarge = false;
+        public const decimal SIZE_LARGE_PRICE = 8.75m;
         private static bool sizeMedium = false;
+        public const decimal SIZE_MEDIUM_PRICE = 6.25m;
 
         private static bool cheeseRegular = false; //flag variables for cheese with const price decimals
+        public const decimal CHEESE_REGULAR_PRICE = 0.00m;
         private static bool cheeseExtra = false;
+        public const decimal CHEESE_EXTRA_PRICE = 1.25m;
 
-        private static bool PizzaAlreadyCreated = false; 
-        private static bool PizzaDelivery = false;
+        private static bool PizzaDelivery = false; //flag variabls for delivery and takout with const price decimals
+        public const decimal PIZZA_DELIVERY_PRICE = 2.50m;
         private static bool PizzaTakeout = false;
+        public const decimal PIZZA_TAKE_OUT_PRICE = 0.00m;
+
+        private static bool PizzaAlreadyCreated = false;
 
 
 
@@ -143,9 +162,9 @@ namespace PizzaCreator
             int numberEntered;
 
             Console.WriteLine("Select a size for your pizza. You must select 1: ");
-            Console.WriteLine("(1) Small: $5");
-            Console.WriteLine("(2) Medium: $6.25");
-            Console.WriteLine("(3) Large: $8.75");
+            Console.WriteLine($"(1) Small({SIZE_SMALL_PRICE:C})");
+            Console.WriteLine($"(2) Medium({SIZE_MEDIUM_PRICE:C})");
+            Console.WriteLine($"(3) Larg({SIZE_LARGE_PRICE:C})");
             Console.WriteLine($"Your total is: {CalculatePrice():C}");
 
             do
@@ -172,12 +191,12 @@ namespace PizzaCreator
             int numberEntered;
 
 
-            Console.WriteLine("Select Meats for your pizza. Each option is an extra $0.75.");
+            Console.WriteLine("Select Meats for your pizza.");
             Console.WriteLine("Select an option again to deselect it.");
-            Console.WriteLine("(1) Bacon");
-            Console.WriteLine("(2) Ham");
-            Console.WriteLine("(3) Pepperoni");
-            Console.WriteLine("(4) Sausage");
+            Console.WriteLine($"(1) Bacon({MEAT_BACON_PRICE:C})");
+            Console.WriteLine($"(2) Ham({MEAT_HAM_PRICE:C})");
+            Console.WriteLine($"(3) Pepperoni({MEAT_PEPPERONI_PRICES:C})");
+            Console.WriteLine($"(4) Sausage({MEAT_SAUSAGE_PRICE:C})");
             Console.WriteLine("(5) CONTINUE");
             Makeline();
 
@@ -223,12 +242,12 @@ namespace PizzaCreator
             string usersChoice;
             int numberEntered;
 
-            Console.WriteLine("Select Vegetables for your pizza. Each option is an extra $0.50.");
+            Console.WriteLine("Select Vegetables for your pizza.");
             Console.WriteLine("Select an option again to deselect it.");
-            Console.WriteLine("(1) Black olives");
-            Console.WriteLine("(2) Mushrooms");
-            Console.WriteLine("(3) Onion");
-            Console.WriteLine("(4) Peppers");
+            Console.WriteLine($"(1) Black olives({VEGETABLES_BLACK_OLIVES_PRICE:C})");
+            Console.WriteLine($"(2) Mushrooms({VEGETABLES_MUSHROOMS_PRICE:C})");
+            Console.WriteLine($"(3) Onion({VEGETABLES_ONION_PRICE:C})");
+            Console.WriteLine($"(4) Peppers({VEGETABLES_PEPPERS_PRICE:C})");
             Console.WriteLine("(5) CONTINUE");
             Makeline();
 
@@ -273,9 +292,9 @@ namespace PizzaCreator
             int numberEntered;
 
             Console.WriteLine("Select a sauce for your pizza. You must select one: ");
-            Console.WriteLine("(1) Traditional: $0");
-            Console.WriteLine("(2) Garlic: $1");
-            Console.WriteLine("(3) Oregano: $1");
+            Console.WriteLine($"(1) Traditional({SAUCE_TRADITIONAL_PRICE:C})");
+            Console.WriteLine($"(2) Garlic({SAUCE_GARLIC_PRICE}:C)");
+            Console.WriteLine($"(3) Oregano({SAUCE_OREGANO_PRICE})");
             Console.WriteLine($"Your total is: {CalculatePrice():C}");
 
             do
@@ -352,42 +371,42 @@ namespace PizzaCreator
             decimal CurrentPrice = 0;
 
             if (sizeSmall == true) //adds cost of size
-                CurrentPrice = CurrentPrice + 5.0m;
+                CurrentPrice = CurrentPrice + SIZE_SMALL_PRICE;
             if (sizeMedium == true)
-                CurrentPrice = CurrentPrice + 6.25m;
+                CurrentPrice = CurrentPrice + SIZE_MEDIUM_PRICE;
             if (sizeLarge == true)
-                CurrentPrice = CurrentPrice + 5.0m;
+                CurrentPrice = CurrentPrice + SIZE_LARGE_PRICE;
 
             if (meatBacon == true) //adds cost of meats
-                CurrentPrice = CurrentPrice + 0.75m;
+                CurrentPrice = CurrentPrice + MEAT_BACON_PRICE;
             if (meatHam == true)
-                CurrentPrice = CurrentPrice + 0.75m;
+                CurrentPrice = CurrentPrice + MEAT_HAM_PRICE;
             if (meatPepperoni == true)
-                CurrentPrice = CurrentPrice + 0.75m;
+                CurrentPrice = CurrentPrice + MEAT_PEPPERONI_PRICES;
             if (meatSausage == true)
-                CurrentPrice = CurrentPrice + 0.75m;
+                CurrentPrice = CurrentPrice + MEAT_SAUSAGE_PRICE;
 
             if (vegetablesBlackOlives == true) //adds cost of Vegetables
-                CurrentPrice = CurrentPrice + 0.50m;
+                CurrentPrice = CurrentPrice + VEGETABLES_BLACK_OLIVES_PRICE;
             if (vegetablesMushrooms == true)
-                CurrentPrice = CurrentPrice + 0.50m;
+                CurrentPrice = CurrentPrice + VEGETABLES_MUSHROOMS_PRICE;
             if (vegetablesOnions == true)
-                CurrentPrice = CurrentPrice + 0.50m;
+                CurrentPrice = CurrentPrice + VEGETABLES_ONION_PRICE;
             if (vegetablesPeppers == true)
-                CurrentPrice = CurrentPrice + 0.50m;
+                CurrentPrice = CurrentPrice + VEGETABLES_PEPPERS_PRICE;
 
             if (sauceTraditional == true) //adds cost of Sauce
-                CurrentPrice = CurrentPrice + 0.00m;
+                CurrentPrice = CurrentPrice + SAUCE_TRADITIONAL_PRICE;
             if (sauceGarlic == true)
-                CurrentPrice = CurrentPrice + 1.00m;
+                CurrentPrice = CurrentPrice + SAUCE_GARLIC_PRICE;
             if (sauceOregano == true)
-                CurrentPrice = CurrentPrice + 1.00m;
+                CurrentPrice = CurrentPrice + SAUCE_OREGANO_PRICE;
 
 
             if (cheeseRegular == true) //adds cost of cheese
-                CurrentPrice = CurrentPrice + 0.00m;
+                CurrentPrice = CurrentPrice + CHEESE_REGULAR_PRICE;
             if (cheeseExtra == true)
-                CurrentPrice = CurrentPrice + 1.00m;
+                CurrentPrice = CurrentPrice + CHEESE_EXTRA_PRICE;
 
 
             return CurrentPrice;

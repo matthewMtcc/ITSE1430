@@ -83,12 +83,16 @@ namespace PizzaCreator
 
                 if (numberEntered == 1)
 
-                    NewOrder();
+                    NewOrder(); //calls new order
 
                 else if (numberEntered == 2)
-                    Console.WriteLine("execute new order function\n");
+
+                    Console.WriteLine("execute Modify order function\n"); //TODO
+
                 else if (numberEntered == 3)
-                    Console.WriteLine("execute new order function\n");
+                    DisplayOrder();
+
+
                 //else for check
             } while (numberEntered != 4);
         }
@@ -137,9 +141,10 @@ namespace PizzaCreator
                 if (numberEntered == 2)
                     return;
             }
-            GetSizeOption();
-            Makeline();
-            GetMeatsOption();
+
+            GetSizeOption(); //calls each get function which sets the flags to options user wants
+            Makeline();      //if there can be only one chosen, the functions declare all options false before user picks
+            GetMeatsOption(); 
             Makeline();
             GetVegetablesOption();
             Makeline();
@@ -149,6 +154,7 @@ namespace PizzaCreator
             Makeline();
             GetDeliveryOption();
 
+            PizzaAlreadyCreated = true; //sets flag for use with creating another new pizza or modifying a non existant pizza
             Console.WriteLine("\nYOUR PIZZA IS COMPLETE!");
             DisplayOrder();
             
@@ -161,7 +167,7 @@ namespace PizzaCreator
 
         private static void GetSizeOption()
         {
-            string usersChoice;
+            string usersChoice; //variables to hold users choice
             int numberEntered;
 
             Console.WriteLine("Select a size for your pizza. You must select 1: ");
@@ -181,13 +187,13 @@ namespace PizzaCreator
                 if (ValidateInput(usersChoice, 3, out numberEntered) == false)
                     Console.WriteLine("Please select a valid option");
 
-                if (numberEntered == 1)
+                if (numberEntered == 1) //sets appropriate flag according to user choic
                     sizeSmall = true;
                 if (numberEntered == 2)
                     sizeMedium = true;
                 if (numberEntered == 3)
                     sizeLarge = true;
-            } while (sizeLarge == false && sizeSmall == false && sizeMedium == false);
+            } while (sizeLarge == false && sizeSmall == false && sizeMedium == false); //one mube chosen ad this cant be left blank
 
             return;
         }
@@ -198,7 +204,7 @@ namespace PizzaCreator
             int numberEntered;
 
 
-            Console.WriteLine("Select Meats for your pizza.");
+            Console.WriteLine("Select Meats for your pizza."); //displays meats menu
             Console.WriteLine("Select an option again to deselect it.");
             Console.WriteLine($"(1) Bacon({MEAT_BACON_PRICE:C})");
             Console.WriteLine($"(2) Ham({MEAT_HAM_PRICE:C})");
@@ -209,7 +215,7 @@ namespace PizzaCreator
 
             do
             {
-                Console.WriteLine($"Your total is: {CalculatePrice():C}");
+                Console.WriteLine($"Your total is: {CalculatePrice():C}"); //shows price
                 DislaySelectedMeats();
                 Console.Write("\n");
                 usersChoice = Console.ReadLine();
@@ -217,11 +223,10 @@ namespace PizzaCreator
                 if (ValidateInput(usersChoice, 5, out numberEntered) == false)
                     Console.WriteLine("Please select a valid option");
 
-                if (numberEntered == 1 && meatBacon == false)
+                if (numberEntered == 1 && meatBacon == false) //for each option changes flag to true or false depending on if its already selected
                     meatBacon = true;
                 else if (numberEntered == 1 && meatBacon == true)
                     meatBacon = false;
-
 
                 if (numberEntered == 2 && meatHam == false)
                     meatHam = true;
@@ -238,7 +243,7 @@ namespace PizzaCreator
                 else if (numberEntered == 4 && meatSausage == true)
                     meatSausage = false;
 
-            } while (numberEntered != 5);
+            } while (numberEntered != 5); //user can tinker with meat options until continue is pushed
 
             return;
         }
@@ -249,7 +254,7 @@ namespace PizzaCreator
             string usersChoice;
             int numberEntered;
 
-            Console.WriteLine("Select Vegetables for your pizza.");
+            Console.WriteLine("Select Vegetables for your pizza."); //displays vegi menu
             Console.WriteLine("Select an option again to deselect it.");
             Console.WriteLine($"(1) Black olives({VEGETABLES_BLACK_OLIVES_PRICE:C})");
             Console.WriteLine($"(2) Mushrooms({VEGETABLES_MUSHROOMS_PRICE:C})");
@@ -260,7 +265,7 @@ namespace PizzaCreator
 
             do
             {
-                Console.WriteLine($"Your total is: {CalculatePrice():C}");
+                Console.WriteLine($"Your total is: {CalculatePrice():C}"); //displays price and lets user select and unselect options
                 DislaySelectedVegetables();
                 Console.Write("\n");
                 usersChoice = Console.ReadLine();
@@ -298,11 +303,11 @@ namespace PizzaCreator
             string usersChoice;
             int numberEntered;
 
-            Console.WriteLine("Select a sauce for your pizza. You must select one: ");
+            Console.WriteLine("Select a sauce for your pizza. You must select one: "); //displays sauce options with price
             Console.WriteLine($"(1) Traditional({SAUCE_TRADITIONAL_PRICE:C})");
             Console.WriteLine($"(2) Garlic({SAUCE_GARLIC_PRICE:C})");
             Console.WriteLine($"(3) Oregano({SAUCE_OREGANO_PRICE:C})");
-            Console.WriteLine($"Your total is: {CalculatePrice():C}");
+            Console.WriteLine($"Your total is: {CalculatePrice():C}"); 
 
             do
             {
@@ -321,7 +326,7 @@ namespace PizzaCreator
                     sauceGarlic = true;
                 if (numberEntered == 3)
                     sauceOregano = true;
-            } while (sauceTraditional == false && sauceGarlic == false && sauceOregano == false);
+            } while (sauceTraditional == false && sauceGarlic == false && sauceOregano == false); //ensures one is selected
 
             return;
         }
@@ -350,7 +355,7 @@ namespace PizzaCreator
                     cheeseRegular = true;
                 if (numberEntered == 2)
                     cheeseExtra = true;
-            } while (cheeseRegular == false && cheeseExtra == false);
+            } while (cheeseRegular == false && cheeseExtra == false); //ensures one is selected
 
             return;
         }
@@ -376,7 +381,7 @@ namespace PizzaCreator
                     PizzaTakeOut = true;
                 if (numberEntered == 2)
                     PizzaDelivery = true;
-            } while (cheeseRegular == false && cheeseExtra == false);
+            } while (cheeseRegular == false && cheeseExtra == false); //ensures one is selected
 
             return;
         }
@@ -422,13 +427,18 @@ namespace PizzaCreator
             if (cheeseExtra == true)
                 CurrentPrice = CurrentPrice + CHEESE_EXTRA_PRICE;
 
+            if (PizzaDelivery == true) //adds cost of transport
+                CurrentPrice = CurrentPrice + PIZZA_DELIVERY_PRICE;
+            if (PizzaTakeOut == true)
+                CurrentPrice = CurrentPrice + PIZZA_TAKE_OUT_PRICE;
+
 
             return CurrentPrice;
         }
 
         private static void DislaySelectedMeats()
         {
-            Console.Write("Your currently selected meats are: ");
+            Console.Write("Your currently selected meats are: "); //displays each meat with a space for future entries
 
             if (meatBacon == true)
             {
@@ -449,7 +459,7 @@ namespace PizzaCreator
 
         private static void DislaySelectedVegetables()
         {
-            Console.Write("Your currently selected Vegetables are: ");
+            Console.Write("Your currently selected Vegetables are: "); //displays selected vegetables with space for future entries
 
             if (vegetablesBlackOlives == true)
             {
@@ -468,7 +478,7 @@ namespace PizzaCreator
                 Console.Write("Peppers ");
         }
 
-        private static void DislaySelectedSize()
+        private static void DislaySelectedSize() //for modify an order only
         {
             Console.Write("Your currently selected size is: ");
 
@@ -483,7 +493,7 @@ namespace PizzaCreator
 
         }
 
-        private static void DislaySelectedSauce()
+        private static void DislaySelectedSauce() //for modify an order only
         {
             Console.Write("Your currently selected sauce is: ");
 
@@ -498,7 +508,7 @@ namespace PizzaCreator
 
         }
 
-        private static void DislaySelectedTransprt()
+        private static void DislaySelectedTransprt() //for modif order only
         {
             Console.Write("You are currently ordering ");
 
@@ -509,7 +519,7 @@ namespace PizzaCreator
                 Console.Write("Take Out");
         }
 
-        private static void DislaySelectedCheese()
+        private static void DislaySelectedCheese() //for modify order only
         {
             Console.Write("Your currently selected cheese is: ");
 
@@ -520,7 +530,7 @@ namespace PizzaCreator
                 Console.Write("Extra");
         }
 
-        private static void Makeline()
+        private static void Makeline() //makes a line of dashes
         {
             Console.WriteLine("----------------------------------------");
         }
@@ -574,7 +584,7 @@ namespace PizzaCreator
                 Console.WriteLine($"  Oregano          {SAUCE_TRADITIONAL_PRICE:C}");
 
             Makeline();
-            Console.WriteLine($"Price              {CalculatePrice()}");
+            Console.WriteLine($"Price              {CalculatePrice():C}");
 
 
         }

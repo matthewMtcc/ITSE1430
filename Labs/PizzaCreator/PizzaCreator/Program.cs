@@ -12,30 +12,30 @@ namespace PizzaCreator
 {
     class Program
     {
-        private static bool meatBacon = false; //flag variables for meats
+        private static bool meatBacon = false; //flag variables for meats with const price decimals
         private static bool meatHam = false;
         private static bool meatPepperoni = false;
         private static bool meatSausage = false;
 
-        private static bool vegetablesBlackOlives = false; //falg variables for vegetables
+        private static bool vegetablesBlackOlives = false; //falg variables for vegetables with const price decimals
         private static bool vegetablesMushrooms = false;
-        private static bool vegetablesUnions = false;
+        private static bool vegetablesOnions = false;
         private static bool vegetablesPeppers = false;
 
-        private static bool sauceTraditional = false; //flag variables for sauce
+        private static bool sauceTraditional = false; //flag variables for sauce with const price decimals
         private static bool sauceOregano = false;
         private static bool sauceGarlic= false;
 
-        private static bool sizeSmall = false; //flag variables for sauce
+        private static bool sizeSmall = false; //flag variables for sauce with const price decimals
         private static bool sizeLarge = false;
         private static bool sizeMedium = false;
 
-        private static bool cheeseRegular = false; //flag variables for cheese
+        private static bool cheeseRegular = false; //flag variables for cheese with const price decimals
         private static bool cheeseExtra = false;
 
         private static bool PizzaAlreadyCreated = false; 
         private static bool PizzaDelivery = false;
-
+        private static bool PizzaTakeout = false;
 
 
 
@@ -58,6 +58,8 @@ namespace PizzaCreator
                     usersChoice = Console.ReadLine();
                     succesfulCheck = ValidateInput(usersChoice, 4, out numberEntered);
                 }
+
+                Makeline();
 
 
                 if (numberEntered == 1)
@@ -119,6 +121,15 @@ namespace PizzaCreator
             GetSizeOption();
             Makeline();
             GetMeatsOption();
+            Makeline();
+            GetVegetablesOption();
+            Makeline();
+            GetSauceOption();
+            Makeline();
+            GetCheeseOption();
+            Makeline();
+            GetDeliveryOption();
+            
 
 
 
@@ -134,7 +145,7 @@ namespace PizzaCreator
             Console.WriteLine("Select a size for your pizza. You must select 1: ");
             Console.WriteLine("(1) Small: $5");
             Console.WriteLine("(2) Medium: $6.25");
-            Console.WriteLine("(3) Lmall: $8.75");
+            Console.WriteLine("(3) Large: $8.75");
             Console.WriteLine($"Your total is: {CalculatePrice():C}");
 
             do
@@ -160,6 +171,7 @@ namespace PizzaCreator
             string usersChoice;
             int numberEntered;
 
+
             Console.WriteLine("Select Meats for your pizza. Each option is an extra $0.75.");
             Console.WriteLine("Select an option again to deselect it.");
             Console.WriteLine("(1) Bacon");
@@ -167,6 +179,7 @@ namespace PizzaCreator
             Console.WriteLine("(3) Pepperoni");
             Console.WriteLine("(4) Sausage");
             Console.WriteLine("(5) CONTINUE");
+            Makeline();
 
             do
             {
@@ -204,16 +217,178 @@ namespace PizzaCreator
             return;
         }
 
+
+        private static void GetVegetablesOption()
+        {
+            string usersChoice;
+            int numberEntered;
+
+            Console.WriteLine("Select Vegetables for your pizza. Each option is an extra $0.50.");
+            Console.WriteLine("Select an option again to deselect it.");
+            Console.WriteLine("(1) Black olives");
+            Console.WriteLine("(2) Mushrooms");
+            Console.WriteLine("(3) Onion");
+            Console.WriteLine("(4) Peppers");
+            Console.WriteLine("(5) CONTINUE");
+            Makeline();
+
+            do
+            {
+                Console.WriteLine($"Your total is: {CalculatePrice():C}");
+                DislaySelectedVegetables();
+                Console.Write("\n");
+                usersChoice = Console.ReadLine();
+
+                if (ValidateInput(usersChoice, 5, out numberEntered) == false)
+                    Console.WriteLine("Please select a valid option");
+
+                if (numberEntered == 1 && vegetablesBlackOlives == false)
+                    vegetablesBlackOlives = true;
+                else if (numberEntered == 1 && vegetablesBlackOlives == true)
+                    vegetablesBlackOlives = false;
+
+
+                if (numberEntered == 2 && vegetablesMushrooms == false)
+                    vegetablesMushrooms = true;
+                else if (numberEntered == 2 && vegetablesMushrooms == true)
+                    vegetablesMushrooms = false;
+
+                if (numberEntered == 3 && vegetablesOnions == false)
+                    vegetablesOnions = true;
+                else if (numberEntered == 3 && vegetablesOnions == true)
+                    vegetablesOnions = false;
+
+                if (numberEntered == 4 && vegetablesPeppers == false)
+                    vegetablesPeppers = true;
+                else if (numberEntered == 4 && vegetablesPeppers == true)
+                    vegetablesPeppers = false;
+
+            } while (numberEntered != 5);
+
+            return;
+        }
+        private static void GetSauceOption()
+        {
+            string usersChoice;
+            int numberEntered;
+
+            Console.WriteLine("Select a sauce for your pizza. You must select one: ");
+            Console.WriteLine("(1) Traditional: $0");
+            Console.WriteLine("(2) Garlic: $1");
+            Console.WriteLine("(3) Oregano: $1");
+            Console.WriteLine($"Your total is: {CalculatePrice():C}");
+
+            do
+            {
+                usersChoice = Console.ReadLine();
+
+                if (ValidateInput(usersChoice, 3, out numberEntered) == false)
+                    Console.WriteLine("Please select a valid option");
+
+                if (numberEntered == 1)
+                    sauceTraditional = true;
+                if (numberEntered == 2)
+                    sauceGarlic = true;
+                if (numberEntered == 3)
+                    sauceOregano = true;
+            } while (sauceTraditional == false && sauceGarlic == false && sauceOregano == false);
+
+            return;
+        }
+
+        private static void GetCheeseOption()
+        {
+            string usersChoice;
+            int numberEntered;
+
+            Console.WriteLine("Select a cheese for your pizza. You must select one: ");
+            Console.WriteLine("(1) Regular: $0");
+            Console.WriteLine("(2) Extra: $1");
+            Console.WriteLine($"Your total is: {CalculatePrice():C}");
+
+            do
+            {
+                usersChoice = Console.ReadLine();
+
+                if (ValidateInput(usersChoice, 3, out numberEntered) == false)
+                    Console.WriteLine("Please select a valid option");
+
+                if (numberEntered == 1)
+                    cheeseRegular = true;
+                if (numberEntered == 2)
+                    cheeseExtra = true;
+            } while (cheeseRegular == false && cheeseExtra == false);
+
+            return;
+        }
+
+        private static void GetDeliveryOption()
+        {
+            string usersChoice;
+            int numberEntered;
+
+            Console.WriteLine("Do You want your pizza to be take out or delivery? You must select one: ");
+            Console.WriteLine("(1) Take Out: $0");
+            Console.WriteLine("(2) Delivery: $2.50");
+            Console.WriteLine($"Your total is: {CalculatePrice():C}");
+
+            do
+            {
+                usersChoice = Console.ReadLine();
+
+                if (ValidateInput(usersChoice, 3, out numberEntered) == false)
+                    Console.WriteLine("Please select a valid option");
+
+                if (numberEntered == 1)
+                    PizzaTakeout = true;
+                if (numberEntered == 2)
+                    PizzaDelivery = true;
+            } while (cheeseRegular == false && cheeseExtra == false);
+
+            return;
+        }
         private static decimal CalculatePrice()
         {
             decimal CurrentPrice = 0;
 
-            if (sizeSmall == true)
+            if (sizeSmall == true) //adds cost of size
                 CurrentPrice = CurrentPrice + 5.0m;
             if (sizeMedium == true)
                 CurrentPrice = CurrentPrice + 6.25m;
             if (sizeLarge == true)
                 CurrentPrice = CurrentPrice + 5.0m;
+
+            if (meatBacon == true) //adds cost of meats
+                CurrentPrice = CurrentPrice + 0.75m;
+            if (meatHam == true)
+                CurrentPrice = CurrentPrice + 0.75m;
+            if (meatPepperoni == true)
+                CurrentPrice = CurrentPrice + 0.75m;
+            if (meatSausage == true)
+                CurrentPrice = CurrentPrice + 0.75m;
+
+            if (vegetablesBlackOlives == true) //adds cost of Vegetables
+                CurrentPrice = CurrentPrice + 0.50m;
+            if (vegetablesMushrooms == true)
+                CurrentPrice = CurrentPrice + 0.50m;
+            if (vegetablesOnions == true)
+                CurrentPrice = CurrentPrice + 0.50m;
+            if (vegetablesPeppers == true)
+                CurrentPrice = CurrentPrice + 0.50m;
+
+            if (sauceTraditional == true) //adds cost of Sauce
+                CurrentPrice = CurrentPrice + 0.00m;
+            if (sauceGarlic == true)
+                CurrentPrice = CurrentPrice + 1.00m;
+            if (sauceOregano == true)
+                CurrentPrice = CurrentPrice + 1.00m;
+
+
+            if (cheeseRegular == true) //adds cost of cheese
+                CurrentPrice = CurrentPrice + 0.00m;
+            if (cheeseExtra == true)
+                CurrentPrice = CurrentPrice + 1.00m;
+
 
             return CurrentPrice;
         }
@@ -237,6 +412,27 @@ namespace PizzaCreator
 
             if (meatSausage == true)
                 Console.Write("Sausage ");
+        }
+
+        private static void DislaySelectedVegetables()
+        {
+            Console.Write("Your currently selected Vegetables are: ");
+
+            if (vegetablesBlackOlives == true)
+            {
+                Console.Write("Black Olives ");
+            }
+
+            if (vegetablesMushrooms == true)
+            {
+                Console.Write("Mushrooms ");
+            }
+
+            if (vegetablesOnions == true)
+                Console.Write("Onions ");
+
+            if (vegetablesPeppers == true)
+                Console.Write("Peppers ");
         }
 
         private static void Makeline()

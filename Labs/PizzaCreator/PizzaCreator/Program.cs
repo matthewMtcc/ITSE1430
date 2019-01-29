@@ -51,7 +51,7 @@ namespace PizzaCreator
 
         private static bool PizzaDelivery = false; //flag variabls for delivery and takout with const price decimals
         public const decimal PIZZA_DELIVERY_PRICE = 2.50m;
-        private static bool PizzaTakeout = false;
+        private static bool PizzaTakeOut = false;
         public const decimal PIZZA_TAKE_OUT_PRICE = 0.00m;
 
         private static bool PizzaAlreadyCreated = false;
@@ -169,6 +169,10 @@ namespace PizzaCreator
 
             do
             {
+                sizeSmall = false; //declares size variables false on every call so only one size is ever selected.
+                sizeMedium = false;
+                sizeLarge = false;
+
                 usersChoice = Console.ReadLine();
 
                 if (ValidateInput(usersChoice, 3, out numberEntered) == false)
@@ -293,12 +297,16 @@ namespace PizzaCreator
 
             Console.WriteLine("Select a sauce for your pizza. You must select one: ");
             Console.WriteLine($"(1) Traditional({SAUCE_TRADITIONAL_PRICE:C})");
-            Console.WriteLine($"(2) Garlic({SAUCE_GARLIC_PRICE}:C)");
-            Console.WriteLine($"(3) Oregano({SAUCE_OREGANO_PRICE})");
+            Console.WriteLine($"(2) Garlic({SAUCE_GARLIC_PRICE:C})");
+            Console.WriteLine($"(3) Oregano({SAUCE_OREGANO_PRICE:C})");
             Console.WriteLine($"Your total is: {CalculatePrice():C}");
 
             do
             {
+                sauceTraditional = false; //sets sauce flags to false before selection to ensure only one is ever selected
+                sauceGarlic = false;
+                sauceOregano = false;
+
                 usersChoice = Console.ReadLine();
 
                 if (ValidateInput(usersChoice, 3, out numberEntered) == false)
@@ -321,12 +329,15 @@ namespace PizzaCreator
             int numberEntered;
 
             Console.WriteLine("Select a cheese for your pizza. You must select one: ");
-            Console.WriteLine("(1) Regular: $0");
-            Console.WriteLine("(2) Extra: $1");
+            Console.WriteLine($"(1) Regular({CHEESE_REGULAR_PRICE:C})");
+            Console.WriteLine($"(2) Extra({CHEESE_EXTRA_PRICE:C})");
             Console.WriteLine($"Your total is: {CalculatePrice():C}");
 
             do
             {
+                cheeseRegular = false; //sets cheese flags to false so only one is ever selected 
+                cheeseExtra = false;
+
                 usersChoice = Console.ReadLine();
 
                 if (ValidateInput(usersChoice, 3, out numberEntered) == false)
@@ -359,7 +370,7 @@ namespace PizzaCreator
                     Console.WriteLine("Please select a valid option");
 
                 if (numberEntered == 1)
-                    PizzaTakeout = true;
+                    PizzaTakeOut = true;
                 if (numberEntered == 2)
                     PizzaDelivery = true;
             } while (cheeseRegular == false && cheeseExtra == false);
@@ -452,6 +463,58 @@ namespace PizzaCreator
 
             if (vegetablesPeppers == true)
                 Console.Write("Peppers ");
+        }
+
+        private static void DislaySelectedSize()
+        {
+            Console.Write("Your currently selected size is: ");
+
+            if (sizeSmall == true)
+                Console.Write("Small");
+
+            if (sizeMedium== true)
+                Console.Write("Medium");
+
+            if (sizeLarge == true)
+                Console.Write("Large");
+
+        }
+
+        private static void DislaySelectedSauce()
+        {
+            Console.Write("Your currently selected sauce is: ");
+
+            if (sauceTraditional == true)
+                Console.Write("Traditional");
+
+            if (sauceGarlic == true)
+                Console.Write("Garlic");
+
+            if (sauceOregano == true)
+                Console.Write("Oregano");
+
+        }
+
+        private static void DislaySelectedTransprt()
+        {
+            Console.Write("You are currently ordering ");
+
+            if (PizzaDelivery == true)
+                Console.Write("Delivery");
+
+            if (PizzaTakeOut == true)
+                Console.Write("Take Out");
+        }
+
+        private static void DislaySelectedCheese()
+        {
+            Console.Write("Your currently selected cheese is: ");
+
+            if (cheeseRegular == true)
+                Console.Write("Regular");
+
+            if (cheeseExtra == true)
+                Console.Write("Extra");
         }
 
         private static void Makeline()

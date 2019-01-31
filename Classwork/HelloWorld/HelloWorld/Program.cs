@@ -69,7 +69,7 @@ namespace HelloWorld
             var path2 = @"C:\Windows\System32";
 
             // 1. String concat
-            Console.WriteLine("Name" + name);
+            Console.WriteLine("Name: " + name);
 
             // 2. String Format
             string str = String.Format("Price: {0:C}", price);
@@ -98,8 +98,8 @@ namespace HelloWorld
             10.ToString(); // "10"
 
             //Is string empty?
-            string input = null;
-            int length = input.Length;
+            string input = "";
+            //int length = input.Length;
             bool isEmpty;
 
             // 1.
@@ -210,5 +210,33 @@ namespace HelloWorld
         private static bool owned;
         private static bool completed;
 
+        private static void PlayWithArrays()
+        {
+            //int size = 100;
+            int[] prices = new int[100];
+            for (var index = 0; index < prices.Length; ++index)
+            {
+                prices[index] = index + 1;
+            };
+
+            DisplayArray(prices);
+
+            var input = "feild1,feild2,feild3;feild4,,feild5";
+            var fields = input.Split(',', ';');
+        }
+
+        private static void DisplayArray( int[] values/*, int count*/ )
+        {
+            //for (var index = 0; index < values.Length; ++index)
+            foreach (var item in values)
+            {
+
+                //Console.WriteLine(values[index]);
+                Console.WriteLine(item); //foreach loop means cannot change and item is read only 
+            };
+        }
+
     }
+
+    
 }

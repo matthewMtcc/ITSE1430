@@ -94,11 +94,12 @@ namespace PizzaCreator
                     DisplayOrder();
 
 
-                //else for check
+                
             } while (numberEntered != 4);
         }
 
-        private static void DisplayMenu()
+        //displays menu and cart if the user has a pizza created
+        private static void DisplayMenu() 
         {
             //displays menu
             Console.WriteLine("PIZZA CREATOR MENU\n");
@@ -127,6 +128,7 @@ namespace PizzaCreator
             }
         }
 
+        //gets a new order from the user
         private static void GetNewOrder()
         {
             string usersChoice; 
@@ -171,10 +173,9 @@ namespace PizzaCreator
             Console.Write("\n");
         }
 
+        //similar to New order exept calls a display option for the "must pick one" choices
         private static void ModifyOrder()
         {
-            string usersChoice;
-            int numberEntered;
 
             if (PizzaAlreadyCreated == false) //a catch for if a user has not already created a pizza.
             {
@@ -201,7 +202,7 @@ namespace PizzaCreator
             GetCheeseOption();
             Makeline();
 
-            DisplaySelectedTransprt();
+            DisplaySelectedDeliveryMethod();
             GetDeliveryOption();
 
             Console.WriteLine("\nYOUR PIZZA HAS BEEN SUCCESSFULLY MODIFIED!");
@@ -210,6 +211,7 @@ namespace PizzaCreator
             Console.Write("\n");
         }
 
+        //gets the size of the pizza
         private static void GetSizeOption()
         {
             string usersChoice; //variables to hold users choice
@@ -243,6 +245,7 @@ namespace PizzaCreator
             return;
         }
 
+        //gets meats option
         private static void GetMeatsOption()
         {
             string usersChoice;
@@ -293,7 +296,7 @@ namespace PizzaCreator
             return;
         }
 
-
+        //functions almost identically to meats but with the vegetable flag variables
         private static void GetVegetablesOption()
         {
             string usersChoice;
@@ -343,6 +346,8 @@ namespace PizzaCreator
 
             return;
         }
+
+        //gets sauce option
         private static void GetSauceOption()
         {
             string usersChoice;
@@ -376,6 +381,7 @@ namespace PizzaCreator
             return;
         }
 
+        //gets cheese option
         private static void GetCheeseOption()
         {
             string usersChoice;
@@ -393,7 +399,7 @@ namespace PizzaCreator
 
                 usersChoice = Console.ReadLine();
 
-                if (ValidateInput(usersChoice, 3, out numberEntered) == false)
+                if (ValidateInput(usersChoice, 2, out numberEntered) == false)
                     Console.WriteLine("Please select a valid option");
 
                 if (numberEntered == 1)
@@ -405,6 +411,7 @@ namespace PizzaCreator
             return;
         }
 
+        //chooses whether pizza will be takout or delivery
         private static void GetDeliveryOption()
         {
             string usersChoice;
@@ -434,6 +441,8 @@ namespace PizzaCreator
 
             return;
         }
+
+        //calculates price each time function is call by adding to a running total if flag is set
         private static decimal CalculatePrice()
         {
             decimal CurrentPrice = 0;
@@ -485,6 +494,7 @@ namespace PizzaCreator
             return CurrentPrice;
         }
 
+        //displays selected meats with spaces between items
         private static void DisplaySelectedMeats()
         {
             Console.Write("Your currently selected meats are: "); //displays each meat with a space for future entries
@@ -506,6 +516,7 @@ namespace PizzaCreator
                 Console.Write("Sausage ");
         }
 
+        //displays selected vegetables with spaces between items
         private static void DisplaySelectedVegetables()
         {
             Console.Write("Your currently selected Vegetables are: "); //displays selected vegetables with space for future entries
@@ -527,6 +538,7 @@ namespace PizzaCreator
                 Console.Write("Peppers ");
         }
 
+        //shows selected size
         private static void DisplaySelectedSize() //for modify an order only
         {
             Console.Write("Your currently selected size is: ");
@@ -542,6 +554,7 @@ namespace PizzaCreator
 
         }
 
+        //Displays sauce
         private static void DisplaySelectedSauce() //for modify an order only
         {
             Console.Write("Your currently selected sauce is: ");
@@ -557,7 +570,8 @@ namespace PizzaCreator
 
         }
 
-        private static void DisplaySelectedTransprt() //for modif order only
+        //displays whether pizza is take out or delivery
+        private static void DisplaySelectedDeliveryMethod() //for modify order only
         {
             Console.Write("You are currently ordering ");
 
@@ -568,6 +582,7 @@ namespace PizzaCreator
                 Console.Write("Take Out\n");
         }
 
+        //displays selected cheese
         private static void DisplaySelectedCheese() //for modify order only
         {
             Console.Write("Your currently selected cheese is: ");
@@ -579,11 +594,13 @@ namespace PizzaCreator
                 Console.Write("Extra\n");
         }
 
-        private static void Makeline() //makes a line of dashes
+        //benign function meant to write a nice divider to the console
+        private static void Makeline() 
         {
             Console.WriteLine("----------------------------------------");
         }
 
+        //uses the flags to create a receipt of the pizza order 
         private static void DisplayOrder()
         {
             if (PizzaAlreadyCreated == false)
@@ -651,6 +668,7 @@ namespace PizzaCreator
 
         }
 
+        //function to make reseting all flags neat 
         private static void ResetAllChoices() //when called resests all options to false as if no pizza has been created. 
         {
             sizeLarge = false;

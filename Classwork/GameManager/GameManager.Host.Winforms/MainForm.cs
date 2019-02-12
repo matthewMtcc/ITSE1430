@@ -27,6 +27,16 @@ namespace GameManager.Host.Winforms
             game.Name = "DOOM";
             game.Price = 59.99m;
 
+            var name = game.Name;
+            if (name.Length == 0)
+                /* is empty*/;
+            if (game.Name.Length == 0)
+                /* is empty */
+                ;
+
+            //var isCool = game.IsCoolGame;
+            //game.IsCoolGame = false;
+
             //Validate(game)
             game.Validate();
 
@@ -48,6 +58,14 @@ namespace GameManager.Host.Winforms
         private void OnHelpAbout( object sender, EventArgs e )
         {
             MessageBox.Show("Help");
+        }
+
+        private void OnGameAdd( object sender, EventArgs e )
+        {
+            //Display UI
+
+            //if Ok the add to system
+
         }
     }
 }

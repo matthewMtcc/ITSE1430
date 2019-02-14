@@ -45,6 +45,9 @@ namespace GameManager.Host.Winforms
             //var str = game.Publisher;
             //Decimal.TryParse("45.99", out game.Price);
 
+            _miGameAdd.Click += new EventHandler(OnGameAdd);
+            //also: _miGameAdd.Click += OnGameAdd;
+
         }
 
         private void OnFileExit ( object sender, EventArgs e )
@@ -57,15 +60,58 @@ namespace GameManager.Host.Winforms
 
         private void OnHelpAbout( object sender, EventArgs e )
         {
-            MessageBox.Show("Help");
+            var form = new AboutBox();
+            form.ShowDialog();
         }
 
         private void OnGameAdd( object sender, EventArgs e )
         {
+
             //Display UI
+            var form = new GameForm();
+            //form.Show(); //modeless dialgg
 
+
+            //modal//this to set parent as mainform 
+            if (form.ShowDialog(this) != DialogResult.OK) //nothing to do
+                return;
             //if Ok the add to system
+            _game = form.Game;
+        }
 
+        private Game _game;
+
+        private void OnGameEdit( object sender, EventArgs e )
+        {
+            var form = new GameForm();
+            form.Game = _game;//Game to edit
+
+            if (form.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            _game = form.Game;
+        }
+
+        private void OnGameDelete( object sender, EventArgs e )
+        {
+            //get selected Game if any 
+            var selected = GetSelectedGame();
+            if (selected == null)
+                return;
+
+            //display confirmation
+            if (MessageBox.Show(this, $"Are you sure you want to delete {selected.Name}?",
+                               "Confirm Delete", MessageBoxButtons.YesNo,
+                               MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+            
+            //TODO: Delete
+            _game = null;
+        }
+
+        private Game GetSelectedGame()
+        {
+            return _game;
         }
     }
 }

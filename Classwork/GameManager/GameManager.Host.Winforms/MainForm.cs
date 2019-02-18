@@ -45,7 +45,7 @@ namespace GameManager.Host.Winforms
             //var str = game.Publisher;
             //Decimal.TryParse("45.99", out game.Price);
 
-            _miGameAdd.Click += new EventHandler(OnGameAdd);
+            //_miGameAdd.Click += new EventHandler(OnGameAdd);
             //also: _miGameAdd.Click += OnGameAdd;
 
         }

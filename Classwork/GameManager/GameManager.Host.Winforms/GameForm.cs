@@ -18,20 +18,20 @@ namespace GameManager.Host.Winforms
         }
 
 
-        public Game Game { get; set; }
-        private void OnSave( object sender, EventArgs e )
+        public Game Game { get; set; } //property that holds the Game this form generates
+        private void OnSave( object sender, EventArgs e ) //eventHandler for save button
         {
-            Game = SaveData();
-            DialogResult = DialogResult.OK;
-            Close();
+            Game = SaveData(); //Game = all data in buttons/boxes
+            DialogResult = DialogResult.OK; //sets show dialog to ok to indicate there is now a game
+            Close(); //close form
         }
 
-        private void OnCancel( object sender, EventArgs e )
+        private void OnCancel( object sender, EventArgs e ) //fucntion that closes but also sets dialog to show it canceled
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
-        private decimal ReadDecimal(TextBox control)
+        private decimal ReadDecimal(TextBox control) //simple check for number
         {
             if (Decimal.TryParse(control.Text, out var value))
                 return value;

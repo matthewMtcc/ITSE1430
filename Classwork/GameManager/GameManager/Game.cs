@@ -9,6 +9,34 @@ namespace GameManager
     /// <summary> Represents a game </summary>
     public class Game
     {
+
+        //Ctors
+        //Default, no return type
+        // 1) Cannot be called directly
+        // 2) Errors are very bad
+        // 3) Should behave no different than doing it manually
+        public Game()
+        {
+            //complex init
+            var x = 1 + 2;
+        }
+
+
+        //constructor chaining
+        public Game( string name ) : this(name, 0)
+        {
+            //Name = name;
+        }
+
+
+        //As soon as you define a ctor, no default ctor anymore
+        public Game( string name, decimal price )// : this()
+        {
+            Name = name;
+            Price = price;
+        }
+
+
         /// <summary>Name of the game.</summary>
         public string Name
         {

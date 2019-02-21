@@ -12,7 +12,7 @@ namespace GameManager.Host.Winforms
 {
     public partial class GameForm : Form
     {
-        public GameForm()
+        public GameForm()// : base()   always called, implicitly there. Its calling the parents first
         {
             InitializeComponent();
         }
@@ -60,11 +60,21 @@ namespace GameManager.Host.Winforms
             game.Owned = _cbOwned.Checked ;
             game.Completed = _cbCompleted.Checked;
 
+            //Demoing ctor
+            var game2 = new Game(_txtName.Text, ReadDecimal(_txtPrice));
+
             return game;
         }
 
-        private void GameForm_Load( object sender, EventArgs e )
+
+        //Defined in type
+        //Derived types may override and change it
+        protected virtual void CanBeChanged() { }
+
+        protected override void OnLoad( EventArgs e )
         {
+            base.OnLoad(e);
+
             if (Game != null)
                 LoadData(Game);
         }

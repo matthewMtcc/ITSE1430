@@ -83,10 +83,10 @@ namespace GameManager.Host.Winforms
             _listGames.Items.Clear();
 
             //nameof(Game.Name) == "Name"
-            _listGames.DisplayMember = nameof(Game.Name);
+            _listGames.DisplayMember = nameof(Game.Name); //will use property
 
             //_listGames.Items.AddRange(_games);
-            foreach (var game in _games)
+            foreach (var game in _games) //be careful overriding ToString for UI stuff
             {
                 if (game != null)
                     _listGames.Items.Add(game);
@@ -208,6 +208,16 @@ namespace GameManager.Host.Winforms
         {
 
 
+        }
+
+        protected override void OnFormClosing( FormClosingEventArgs e )
+        {
+            if (MessageBox.Show(this, "Are you sure?", "Close", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+                return;
+            };
+            base.OnFormClosing(e);
         }
     }
 }

@@ -1,33 +1,87 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameManager
 {
-    /// <summary> Represents a game </summary>
+    /// <summary>Represents a game.</summary>
     public class Game
     {
+        /// <summary>Gets or sets the name of the game.</summary>
+        public string Name
+        {
+            get { return _name ?? ""; }
+            set { _name = value ?? ""; }
+        }
 
-        //Ctors
+        /// <summary>Gets or sets the description.</summary>
+        public string Description
+        {
+            get { return _description ?? ""; }
+            set { _description = value; }
+        }
+
+        /// <summary>Gets or sets the price.</summary>
+        public decimal Price { get; set; }
+
+        /// <summary>Determines if the game is owned.</summary>
+        public bool Owned { get; set; } = true;
+
+        /// <summary>Determines if the game is completed.</summary>
+        public bool Completed { get; set; }
+
+        /// <summary>Converts the object to a string.</summary>
+        /// <returns>The string equivalent.</returns>
+        public override string ToString()
+        {
+            return Name;
+        }
+
+        /// <summary>Validates the object.</summary>
+        /// <returns>true if valid or false otherwise.</returns>
+        public bool Validate( /* Game this */ )
+        {
+            //Redundant use of this
+            //var str = this.Name;
+
+            //Name is required
+            if (String.IsNullOrEmpty(Name))
+                return false;
+
+            //Price >= 0
+            if (Price < 0)
+                return false;
+
+            //Only if you need to pass the instance to somebody else
+            //MyType.Foo(this);
+
+            return true;
+        }
+
+        #region Private Members
+
+        private string _name = "";
+        private string _description = "";
+
+        #endregion
+
+        #region Demo Code Only
+
+        #region Constructors
+
         //Default, no return type
         // 1) Cannot be called directly
         // 2) Errors are very bad
-        // 3) Should behave no different than doing it manually
+        // 3) Should behave no different than doing it manually        
         public Game()
         {
-            //complex init
+            //Complex init
             var x = 1 + 2;
         }
 
-
-        //constructor chaining
+        //Constructor chaining
         public Game( string name ) : this(name, 0)
         {
             //Name = name;
         }
-
 
         //As soon as you define a ctor, no default ctor anymore
         public Game( string name, decimal price )// : this()
@@ -35,39 +89,31 @@ namespace GameManager
             Name = name;
             Price = price;
         }
-
-
-        /// <summary>Name of the game.</summary>
-        public string Name
-        {
-            get { return _name ?? ""; }//null coalescing operatr, will set to left value if right is null
-            set { _name = value ?? ""; }
-        }
-
-        private string _name = "";
-
-        /// <summary>Publisher of the game.</summary>
-        public string Publisher
-        {
-            get { return _publisher ?? ""; } //defacto string property
-            set { _publisher = value; }
-        }
-        private string _publisher = "";
+        #endregion
 
         //Calculated property
-        public bool IsCoolGame //this is cool
+        /*public bool IsCoolGame
         {
             get { return Publisher != "EA"; }
-        }
+        }*/
 
-        //public string Password //its there, you must have either get or set.
+        //Mixed accessibility
+        //public double Rate { get; internal set; }
+
+        //public void Foo()
+        //{
+        //    //NOT DETERMINISTIC - should have been a method
+        //    var now = DateTime.Now;
+        //}
+
+
+        //Setter only
+        //public string Password
         //{
         //    set { }
         //}
 
-        //Auto property
-        public decimal Price { get; set; }
-
+        //Auto property equivalent
         //public decimal Price
         //{
         //    get { return _price; }
@@ -75,27 +121,6 @@ namespace GameManager
         //}
         //private decimal _price;
 
-        public bool Owned { get; set; } = true; //compiler sugar, option on auto to initialize.
-
-        public bool Completed { get; set; }
-
-        //Mixed accessibility
-        public double Rate //they can read bunt not write, not needed alot, cant mod both
-        {
-            get;
-           internal set;
-        }
-
-        public void Foo()
-        {
-            //NOT DETERMINISTIC - should have been a method
-            var now = DateTime.Now;
-        }
-        
-        public override string ToString()
-        {
-            return Name;
-        }
         //Can init the data as well
         //public string[] Genres { get; set; }
 
@@ -114,24 +139,7 @@ namespace GameManager
 
         //public string[] genres = new string[10];
         //private decimal realPrice = Price;
-        /// <summary> Validates the Object </summary>
-        /// <returns></returns>
-        public bool Validate(/* Game this*/)
-        {
-            //redndant
-            //var str = this.Name;
-
-            //Name is required
-            if (String.IsNullOrEmpty(Name))
-                return false;
-
-            //Price >=0
-            if (Price < 0)
-                return false;
-            //Only if you need to pass the instnce to somebody else
-            //MyType.Foo(this);
-            return true;
-        }
-
+        #endregion
     }
 }
+

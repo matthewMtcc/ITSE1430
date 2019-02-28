@@ -46,7 +46,7 @@ namespace GameManager.Host.Winforms
                 /* is empty */
                 ;
 
-            var isCool = game.IsCoolGame;
+            //var isCool = game.IsCoolGame;
             //game.IsCoolGame = false;
 
             //Validate(game)

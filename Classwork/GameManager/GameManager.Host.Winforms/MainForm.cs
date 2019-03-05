@@ -85,12 +85,14 @@ namespace GameManager.Host.Winforms
             //nameof(Game.Name) == "Name"
             _listGames.DisplayMember = nameof(Game.Name); //will use property
 
+            _listGames.Items.AddRange(_games.GetAll());
+
             //_listGames.Items.AddRange(_games);
-            foreach (var game in _games) //be careful overriding ToString for UI stuff
+            /*foreach (var game in _games) //be careful overriding ToString for UI stuff
             {
                 if (game != null)
                     _listGames.Items.Add(game);
-            };
+            };*/
         }
 
         private void OnGameAdd( object sender, EventArgs e )
@@ -105,22 +107,24 @@ namespace GameManager.Host.Winforms
             if (form.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            //TODO: Add
-            _games[GetNextEmptyGame()] = form.Game;
+            //Add
+            //_games[GetNextEmptyGame()] = form.Game;
+            _games.Add(form.Game);
+
             BindList();
         }
 
         //HACK: Find first spot in array with no game
-        private int GetNextEmptyGame()
+        /*private int GetNextEmptyGame()
         {
             for (var index = 0; index < _games.Length; ++index)
                 if (_games[index] == null)
                     return index;
 
             return -1;
-        }
+        }*/
 
-        private Game[] _games = new Game[100];
+        private GameDatabase _games = new GameDatabase();
 
         private void OnGameEdit( object sender, EventArgs e )
         {
@@ -136,13 +140,14 @@ namespace GameManager.Host.Winforms
             if (form.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            //TODO: Fix to edit, not add
-            UpdateGame(game, form.Game);
+
+            //UpdateGame(game, form.Game);
+            _games.Update(game.Id, form.Game);
             BindList();
         }
 
 
-        private void UpdateGame( Game oldGame, Game newGame )
+        /*private void UpdateGame( Game oldGame, Game newGame )
         {
             for (var index = 0; index < _games.Length; ++index)
             {
@@ -152,7 +157,7 @@ namespace GameManager.Host.Winforms
                     break;
                 };
             };
-        }
+        }*/
 
         private void OnGameDelete( object sender, EventArgs e )
         {
@@ -171,12 +176,12 @@ namespace GameManager.Host.Winforms
             //TODO: Delete
 
             //TODO: Delete
-            DeleteGame(selected);
+            _games.Delete(selected.Id);
             BindList();
             //_game = null;
         }
 
-        private void DeleteGame( Game game )
+        /*private void DeleteGame( Game game )
         {
             for (var index = 0; index < _games.Length; ++index)
             {
@@ -186,7 +191,7 @@ namespace GameManager.Host.Winforms
                     break;
                 };
             };
-        }
+        }*/
 
         private Game GetSelectedGame()
         {
@@ -218,6 +223,13 @@ namespace GameManager.Host.Winforms
                 return;
             };
             base.OnFormClosing(e);
+        }
+
+        protected override void OnLoad( EventArgs e )
+        {
+            base.OnLoad(e);
+
+            BindList();
         }
     }
 }

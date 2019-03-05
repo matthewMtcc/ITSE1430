@@ -12,6 +12,8 @@ namespace GameManager
             set { _name = value ?? ""; }
         }
 
+        public int Id { get; set; }
+
         /// <summary>Gets or sets the description.</summary>
         public string Description
         {

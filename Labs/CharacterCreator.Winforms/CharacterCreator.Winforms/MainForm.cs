@@ -19,7 +19,6 @@ namespace CharacterCreator.Winforms
 
         private void OnFileExit( object sender, EventArgs e )
         {
-            //var DOOM = new Character();
             Close();
         }
 
@@ -27,6 +26,17 @@ namespace CharacterCreator.Winforms
         {
             var form = new AboutBox1();
             form.ShowDialog();
+        }
+
+        private void OnCharacterAdd( object sender, EventArgs e )
+        {
+            var form = new CharacterForm();
+
+            while (true)
+            {
+                if (form.ShowDialog(this) != DialogResult.OK)
+                    return;
+            }
         }
     }
 }

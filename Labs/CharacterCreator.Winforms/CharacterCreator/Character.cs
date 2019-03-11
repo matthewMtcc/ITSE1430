@@ -70,6 +70,31 @@ namespace CharacterCreator
             set { _charisma = (value > 0 && value < 101) ? value : 50; }
         }
 
+        public bool Validate()
+        {
+            //Name is required
+            if (String.IsNullOrEmpty(Name))
+                return false;
+            if (String.IsNullOrEmpty(Race))
+                return false;
+            if (String.IsNullOrEmpty(Profession))
+                return false;
+
+            //stats > 0 and less then 100
+            if (Strength < 0 || Strength > 100)
+                return false;
+            if (Agility < 0 || Agility > 100)
+                return false;
+            if (Constitution < 0 || Constitution > 100)
+                return false;
+            if (Intellignece < 0 || Intellignece > 100)
+                return false;
+            if (Charisma < 0 || Charisma > 100)
+                return false;
+
+            return true;
+        }
+
         //private stat fields
         private int _constitution;
         private int _agility;

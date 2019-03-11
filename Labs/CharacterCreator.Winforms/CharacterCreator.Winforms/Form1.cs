@@ -19,7 +19,7 @@ namespace CharacterCreator.Winforms
 
         private void OnFileExit( object sender, EventArgs e )
         {
-            var DOOM = new Character();
+            //var DOOM = new Character();
             Close();
         }
 

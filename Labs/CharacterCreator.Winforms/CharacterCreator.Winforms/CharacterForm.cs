@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CharacterCreator.Winforms
 {
-    /// <summary>Allows adding or editing a Character.</summary>
+    /// <summary>Form for adding or creating a character.</summary>
     public partial class CharacterForm : Form
     {
         public CharacterForm()
@@ -18,16 +18,17 @@ namespace CharacterCreator.Winforms
             InitializeComponent();
         }
 
+        /// <summary>Property holding the character gnerated in the form</summary>
         public Character CurrentCharacter { get; set; }
 
-        //called when user cancels form
+        //simple cancel even handler
         private void OnCancel( object sender, EventArgs e )
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
 
-        //loads data
+        //loads a character into the form for editing 
         private void LoadData(Character character)
         {
             _txtName.Text = character.Name;
@@ -42,7 +43,7 @@ namespace CharacterCreator.Winforms
             _txtCharisma.Text = character.Charisma.ToString();
         }
 
-        //saves gamae data to property
+        //saves character data in controls to character property
         private Character SaveData()
         {
             var character = new Character();
@@ -60,6 +61,8 @@ namespace CharacterCreator.Winforms
             return character;
         }
 
+        //helper method that converts string to int 
+        //returns -1 if invalid
         private int ReadInt( TextBox control)
         {
             if (control.Text.Length == 0)
@@ -71,6 +74,7 @@ namespace CharacterCreator.Winforms
             return -1;
         }
 
+        //validaton for name, simply requires that something is there
         private void OnValidateName( object sender, CancelEventArgs e )
         {
             var tb = sender as TextBox;
@@ -83,6 +87,7 @@ namespace CharacterCreator.Winforms
                 _errors.SetError(tb, "");
         }
 
+        //validation for attributes. Requires a number between 1 and 100
         private void OnValidateStat( object sender, System.ComponentModel.CancelEventArgs e )
         {
             var tb = sender as TextBox;
@@ -97,6 +102,7 @@ namespace CharacterCreator.Winforms
 
         }
 
+        //OnSave Event handler. Validates at UI and business level.
         private void OnSave( object sender, EventArgs e )
         {
             if (!ValidateChildren())
@@ -115,6 +121,7 @@ namespace CharacterCreator.Winforms
             Close();
         }
 
+        //Validation for race combo box. Requires that a race is selected
         private void OnValidateRace( object sender, CancelEventArgs e )
         {
             var cb = sender as ComboBox;
@@ -127,7 +134,7 @@ namespace CharacterCreator.Winforms
                 _errors.SetError(cb, "");
 
         }
-
+        //Validation for Profession combo box. Requires that a profession is selected
         private void OnValidateProfession( object sender, CancelEventArgs e )
         {
             var cb = sender as ComboBox;
@@ -141,9 +148,12 @@ namespace CharacterCreator.Winforms
 
         }
 
+        //sets attributes intitial values to 50 then 
+        //if CurrentCharacter is not assigned,
+        //most likely for editing, load
+        //that data into the controls
         protected override void OnLoad( EventArgs e )
         {
-            //this.OnLoad(e);
             base.OnLoad(e);
 
             _txtStrength.Text = "50";
@@ -152,7 +162,6 @@ namespace CharacterCreator.Winforms
             _txtIntelligence.Text = "50";
             _txtCharisma.Text = "50";
 
-            //Init UI if editing a game
             if (CurrentCharacter != null)
                 LoadData(CurrentCharacter);
 

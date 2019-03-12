@@ -22,12 +22,14 @@ namespace CharacterCreator.Winforms
             Close();
         }
 
+        //Event Handler for about button
         private void OnAboutClicked( object sender, EventArgs e )
         {
             var form = new AboutBox1();
             form.ShowDialog();
         }
 
+        //Event Handler for adding a character
         private void OnCharacterAdd( object sender, EventArgs e )
         {
             var form = new CharacterForm();
@@ -40,7 +42,7 @@ namespace CharacterCreator.Winforms
                 BindList();
         }
 
-        //binds data to list box
+        //Helper method: Binds data to the list box
         private void BindList()
         {
             _listCharacters.Items.Clear();
@@ -65,12 +67,14 @@ namespace CharacterCreator.Winforms
             base.OnFormClosing(e);
         }
 
-        //KEEP WATCH: seems good
+        //helper method to get the user's currently selected character
+        //will return null if one is not selected
         private Character GetSelectedCharacter()
         {
             return _listCharacters.SelectedItem as Character;
         }
 
+        //helper method to get next free position in _characters array
         private int GetNextEmptyPosition()
         {
             for (int i = 0; i < _characters.Length; ++i)
@@ -83,6 +87,7 @@ namespace CharacterCreator.Winforms
                 
         }
 
+        //Event Handler for editing a game
         private void OnGameEdit( object sender, EventArgs e )
         {
             var form = new CharacterForm();
@@ -100,6 +105,7 @@ namespace CharacterCreator.Winforms
             BindList();
         }
 
+        //helper method for updating an existing character
         private void UpdateCharacter( Character oldCharacter, Character newCharacter)
         {
             for(int i = 0; i < _characters.Length; i++)
@@ -112,8 +118,8 @@ namespace CharacterCreator.Winforms
             };
         }
 
-        private Character[] _characters = new Character[100];
-
+        //event handler for delete character. Finds 
+        //selected character and assigns it the value null
         private void OnCharacterDelete( object sender, EventArgs e )
         {
             var selected = GetSelectedCharacter();
@@ -134,5 +140,8 @@ namespace CharacterCreator.Winforms
             };
             BindList();
         }
+
+        //arrary holding all created characters
+        private Character[] _characters = new Character[100];
     }
 }

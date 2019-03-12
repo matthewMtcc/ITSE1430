@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CharacterCreator
 {
+    /// <summary>Represents a character for a fantasy RPG</summary>
     public class Character
     {
         /// <summary>Gets or sets the name of the Character.</summary>
@@ -39,37 +40,39 @@ namespace CharacterCreator
 
 
         //All attributes will assign 50 to the value if an invalid number is passed
-        /// <summary>Gets or sets the Strength of the Character.</summary>
+        /// <summary>Gets or sets the Strength Attribute of the Character.</summary>
         public int Strength
         {
             get { return _strength; }
             set { _strength = (value > 0 && value < 101) ? value : 50; }
         }
-
+        /// <summary>Gets or sets the Intelligence Attribute of the Character.</summary>
         public int Intellignece
         {
             get { return _intelligence; }
             set { _intelligence = (value > 0 && value < 101) ? value : 50; }
         }
-
+        /// <summary>Gets or sets the Agility Attribute of the Character.</summary>
         public int Agility
         {
             get { return _agility; }
             set { _agility = (value > 0 && value < 101) ? value : 50; }
         }
-
+        /// <summary>Gets or sets the Constitution Attribute of the Character.</summary>
         public int Constitution
         {
             get { return _constitution; }
             set { _constitution = (value > 0 && value < 101) ? value : 50; }
         }
-
+        /// <summary>Gets or sets the Charisma Attribute of the Character.</summary>
         public int Charisma
         {
             get { return _charisma; }
             set { _charisma = (value > 0 && value < 101) ? value : 50; }
         }
-
+        
+        /// <summary>Validates the object.</summary>
+        /// <returns> Boolean indicating validation.</returns>
         public bool Validate()
         {
             //Name is required

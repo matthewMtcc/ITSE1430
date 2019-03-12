@@ -49,7 +49,7 @@ namespace CharacterCreator.Winforms
             character.Name = _txtName.Text;
             character.Description = _txtDescription.Text;
             character.Race = _cbRace.SelectedItem.ToString();
-            character.Profession = _cbProfession.ToString();
+            character.Profession = _cbProfession.SelectedItem.ToString();
 
             character.Strength = ReadInt(_txtStrength);
             character.Agility = ReadInt(_txtAgility);

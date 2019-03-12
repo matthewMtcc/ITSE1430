@@ -113,5 +113,26 @@ namespace CharacterCreator.Winforms
         }
 
         private Character[] _characters = new Character[100];
+
+        private void OnCharacterDelete( object sender, EventArgs e )
+        {
+            var selected = GetSelectedCharacter();
+            if (selected == null)
+                return;
+
+            if (MessageBox.Show(this, $"Are you sure you want to delete {selected.Name}?",
+                   "Confirm Delete", MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+            for (int index = 0; index < _characters.Length; ++index)
+            {
+                if (_characters[index] == selected)
+                {
+                    _characters[index] = null;
+                    break;
+                };
+            };
+            BindList();
+        }
     }
 }

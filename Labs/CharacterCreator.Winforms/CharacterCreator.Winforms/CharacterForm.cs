@@ -158,6 +158,5 @@ namespace CharacterCreator.Winforms
 
             ValidateChildren();
         }
-
     }
 }

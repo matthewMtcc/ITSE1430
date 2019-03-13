@@ -50,12 +50,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this._errors = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this._errors)).BeginInit();
             this.SuspendLayout();
             // 
             // _txtName
             // 
-            this._txtName.Location = new System.Drawing.Point(91, 51);
+            this._txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtName.Location = new System.Drawing.Point(90, 35);
             this._txtName.Name = "_txtName";
             this._txtName.Size = new System.Drawing.Size(100, 20);
             this._txtName.TabIndex = 1;
@@ -64,7 +68,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 54);
+            this.label1.Location = new System.Drawing.Point(36, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -72,7 +76,10 @@
             // 
             // _txtDescription
             // 
-            this._txtDescription.Location = new System.Drawing.Point(90, 229);
+            this._txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtDescription.Location = new System.Drawing.Point(31, 325);
             this._txtDescription.Multiline = true;
             this._txtDescription.Name = "_txtDescription";
             this._txtDescription.Size = new System.Drawing.Size(164, 94);
@@ -81,7 +88,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 229);
+            this.label2.Location = new System.Drawing.Point(109, 309);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 3;
@@ -89,6 +96,8 @@
             // 
             // _cbRace
             // 
+            this._cbRace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._cbRace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._cbRace.FormattingEnabled = true;
             this._cbRace.Items.AddRange(new object[] {
@@ -97,7 +106,7 @@
             "Elf",
             "Half Elf",
             "Gnome"});
-            this._cbRace.Location = new System.Drawing.Point(90, 85);
+            this._cbRace.Location = new System.Drawing.Point(90, 64);
             this._cbRace.Name = "_cbRace";
             this._cbRace.Size = new System.Drawing.Size(121, 21);
             this._cbRace.TabIndex = 2;
@@ -105,6 +114,8 @@
             // 
             // _cbProfession
             // 
+            this._cbProfession.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._cbProfession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._cbProfession.FormattingEnabled = true;
             this._cbProfession.Items.AddRange(new object[] {
@@ -113,7 +124,7 @@
             "Priest",
             "Rogue",
             "Wizard"});
-            this._cbProfession.Location = new System.Drawing.Point(91, 118);
+            this._cbProfession.Location = new System.Drawing.Point(90, 94);
             this._cbProfession.Name = "_cbProfession";
             this._cbProfession.Size = new System.Drawing.Size(121, 21);
             this._cbProfession.TabIndex = 3;
@@ -122,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 88);
+            this.label3.Location = new System.Drawing.Point(38, 67);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 6;
@@ -131,7 +142,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 121);
+            this.label4.Location = new System.Drawing.Point(15, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 7;
@@ -139,7 +150,9 @@
             // 
             // _txtStrength
             // 
-            this._txtStrength.Location = new System.Drawing.Point(373, 47);
+            this._txtStrength.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtStrength.Location = new System.Drawing.Point(90, 166);
             this._txtStrength.Name = "_txtStrength";
             this._txtStrength.Size = new System.Drawing.Size(100, 20);
             this._txtStrength.TabIndex = 4;
@@ -147,7 +160,9 @@
             // 
             // _txtAgility
             // 
-            this._txtAgility.Location = new System.Drawing.Point(373, 77);
+            this._txtAgility.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtAgility.Location = new System.Drawing.Point(90, 192);
             this._txtAgility.Name = "_txtAgility";
             this._txtAgility.Size = new System.Drawing.Size(100, 20);
             this._txtAgility.TabIndex = 5;
@@ -155,7 +170,9 @@
             // 
             // _txtConstitution
             // 
-            this._txtConstitution.Location = new System.Drawing.Point(373, 107);
+            this._txtConstitution.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtConstitution.Location = new System.Drawing.Point(90, 218);
             this._txtConstitution.Name = "_txtConstitution";
             this._txtConstitution.Size = new System.Drawing.Size(100, 20);
             this._txtConstitution.TabIndex = 6;
@@ -163,7 +180,9 @@
             // 
             // _txtIntelligence
             // 
-            this._txtIntelligence.Location = new System.Drawing.Point(373, 142);
+            this._txtIntelligence.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtIntelligence.Location = new System.Drawing.Point(90, 244);
             this._txtIntelligence.Name = "_txtIntelligence";
             this._txtIntelligence.Size = new System.Drawing.Size(100, 20);
             this._txtIntelligence.TabIndex = 7;
@@ -171,7 +190,9 @@
             // 
             // _txtCharisma
             // 
-            this._txtCharisma.Location = new System.Drawing.Point(373, 175);
+            this._txtCharisma.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._txtCharisma.Location = new System.Drawing.Point(90, 270);
             this._txtCharisma.Name = "_txtCharisma";
             this._txtCharisma.Size = new System.Drawing.Size(100, 20);
             this._txtCharisma.TabIndex = 8;
@@ -180,7 +201,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(286, 54);
+            this.label5.Location = new System.Drawing.Point(24, 169);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 13;
@@ -189,7 +210,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(294, 80);
+            this.label6.Location = new System.Drawing.Point(37, 195);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 14;
@@ -198,7 +219,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(271, 110);
+            this.label7.Location = new System.Drawing.Point(9, 221);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 13);
             this.label7.TabIndex = 15;
@@ -207,7 +228,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(272, 142);
+            this.label8.Location = new System.Drawing.Point(10, 247);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 13);
             this.label8.TabIndex = 16;
@@ -216,7 +237,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(278, 178);
+            this.label9.Location = new System.Drawing.Point(21, 273);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(50, 13);
             this.label9.TabIndex = 17;
@@ -224,7 +245,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(320, 263);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(55, 438);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
@@ -234,8 +256,9 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.CausesValidation = false;
-            this.button2.Location = new System.Drawing.Point(401, 263);
+            this.button2.Location = new System.Drawing.Point(136, 438);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 11;
@@ -248,12 +271,32 @@
             this._errors.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this._errors.ContainerControl = this;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(97, 19);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 13);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Background";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(111, 137);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(51, 13);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Attributes";
+            // 
             // CharacterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(572, 493);
+            this.ClientSize = new System.Drawing.Size(241, 486);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label9);
@@ -310,5 +353,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ErrorProvider _errors;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }

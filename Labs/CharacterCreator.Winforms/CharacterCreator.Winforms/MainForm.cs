@@ -91,6 +91,7 @@ namespace CharacterCreator.Winforms
         private void OnGameEdit( object sender, EventArgs e )
         {
             var form = new CharacterForm();
+            form.Text = "Edit Character";
 
             var character = GetSelectedCharacter();
             if (character == null)
@@ -126,10 +127,10 @@ namespace CharacterCreator.Winforms
             if (selected == null)
                 return;
 
-            if (MessageBox.Show(this, $"Are you sure you want to delete {selected.Name}?",
-                   "Confirm Delete", MessageBoxButtons.YesNo,
-                   MessageBoxIcon.Question) != DialogResult.Yes)
+            if (MessageBox.Show(this, $"Are you sure you want to delete {selected.Name}?", "Confirm Delete?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
+
             for (int index = 0; index < _characters.Length; ++index)
             {
                 if (_characters[index] == selected)

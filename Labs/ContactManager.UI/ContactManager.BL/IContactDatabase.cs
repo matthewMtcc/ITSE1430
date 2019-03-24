@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿/*
+ * Lab 3
+ * Matthew McNatt
+ */
+using System.Collections.Generic;
 
 namespace ContactManager.BL
 {

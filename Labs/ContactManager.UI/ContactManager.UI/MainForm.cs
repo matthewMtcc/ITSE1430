@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ * Lab 3
+ * Matthew McNatt
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

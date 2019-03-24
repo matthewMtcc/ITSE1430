@@ -2,7 +2,7 @@
 
 namespace ContactManager.BL
 {
-    public interface IContactDatabase
+    public interface IContactDataBase
     {
         Contact Add( Contact contact );
         Contact Get( int id );

@@ -43,8 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contact.cs" />
-    <Compile Include="ContactDatabase.cs" />
-    <Compile Include="IContactDatabase.cs" />
+    <Compile Include="ContactDataBase.cs" />
+    <Compile Include="IContactDataBase.cs" />
     <Compile Include="IMessageService.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="ObjectValidator.cs" />

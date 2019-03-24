@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContactManager.BL
 {
-    public class ContactDatabase : IContactDatabase
+    public class ContactDataBase : IContactDataBase
     {
         public Contact Add ( Contact contact )
         {
@@ -20,7 +20,7 @@ namespace ContactManager.BL
             //checks to see if Contact exists
             var existing = GetIndex(contact.Name);
             if (existing >= 0)
-                throw new Exception("Contact must be Unique!");
+                throw new Exception("Contact must be Unique");
 
             //adds contact to the list
             _contacts.Add(new Contact() {Name = contact.Name, Address = contact.Address, Id = ++_nextId });
@@ -41,11 +41,11 @@ namespace ContactManager.BL
 
             var index = GetIndex(id);
             if (index < 0)
-                throw new Exception("Game does not exist");
+                throw new Exception("Contact does not exist");
 
             var existingIndex = GetIndex(contact.Name);
             if (existingIndex >= 0 && existingIndex != index)
-                throw new Exception("Game must be Unique");
+                throw new Exception("Contact must be Unique");
 
             contact.Id = id;
             _contacts[index] = (new Contact() { Name = contact.Name, Address = contact.Address, Id = id });

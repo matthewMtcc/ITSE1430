@@ -19,7 +19,7 @@ namespace ContactManager.BL
                 throw new ArgumentNullException(nameof(contact));
 
             //validates object
-            new ObjectValidator().Validate(contact);
+            ObjectValidator.Validate(contact);
 
             //checks to see if Contact exists
             var existing = GetIndex(contact.Name);
@@ -41,7 +41,7 @@ namespace ContactManager.BL
             if (contact == null)
                 throw new ArgumentNullException(nameof(contact));
 
-            new ObjectValidator().Validate(contact);
+            ObjectValidator.Validate(contact);
 
             var index = GetIndex(id);
             if (index < 0)

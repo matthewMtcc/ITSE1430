@@ -59,7 +59,7 @@ namespace ContactManager.UI
 
             try
             {
-                new ObjectValidator().Validate(contact);
+                ObjectValidator.Validate(contact);
             } catch (ValidationException)
             {
                 MessageBox.Show(this, "Contact not valid.", "Error", MessageBoxButtons.OK);

@@ -12,6 +12,6 @@ namespace ContactManager.BL
 {
     public interface IMessageService
     {
-       void Send(Message message);
+        void Send(Message message);
     }
 }

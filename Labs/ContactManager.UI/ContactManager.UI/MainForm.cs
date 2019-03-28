@@ -12,10 +12,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ContactManager.BL;
+using Message = ContactManager.BL.Message;
 
 namespace ContactManager.UI
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form, IMessageService
     {
         public MainForm()
         {
@@ -73,9 +74,15 @@ namespace ContactManager.UI
         {
             _listContacts.Items.Clear();
             _listContacts.DisplayMember = nameof(Contact.Name);
-            _listContacts.Items.AddRange(_contacts.GetAll().ToArray());
+            var items = _contacts.GetAll();
+            items = items.OrderBy(GetName);
+            _listContacts.Items.AddRange(items.ToArray());
         }
 
+        private string GetName(Contact contact)
+        {
+            return contact.Name;
+        }
         //helper method to display an error message
         private void DisplayError( Exception ex )
         {
@@ -149,6 +156,29 @@ namespace ContactManager.UI
             };
             BindList();
 
+        }
+
+        private void OnSendMessage( object sender, EventArgs e )
+        {
+            var contact = GetSelectedContact();
+            if (contact == null)
+                return;
+
+            var form = new SendMessageForm();
+            form.CurrentContact = contact;
+            form.Text = $"Message to {contact.Name}";
+
+            if (form.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            Send(form.CurrentMessage);
+
+        }
+
+        public void Send(Message message)
+        {
+            _txtSentMessages.Text += $"To: {message.MessageContact}\r\nSubject: {message.Subject}\r\n{message.Body}\r\n\r\n";
+            return;
         }
     }
 }

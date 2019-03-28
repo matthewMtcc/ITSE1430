@@ -40,9 +40,14 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this._listContacts = new System.Windows.Forms.ListBox();
+            this.sendMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this._txtSentMessages = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +59,7 @@
             this.contactsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(579, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -96,6 +101,8 @@
             this.addToolStripMenuItem,
             this.editToolStripMenuItem,
             this.toolStripMenuItem1,
+            this.sendMessageToolStripMenuItem,
+            this.toolStripMenuItem2,
             this.deleteToolStripMenuItem});
             this.contactsToolStripMenuItem.Name = "contactsToolStripMenuItem";
             this.contactsToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
@@ -139,24 +146,62 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this._listContacts);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 426);
-            this.splitContainer1.SplitterDistance = 292;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this._txtSentMessages);
+            this.splitContainer1.Size = new System.Drawing.Size(579, 426);
+            this.splitContainer1.SplitterDistance = 212;
             this.splitContainer1.TabIndex = 1;
             // 
             // _listContacts
             // 
-            this._listContacts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._listContacts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._listContacts.FormattingEnabled = true;
             this._listContacts.Location = new System.Drawing.Point(0, 0);
             this._listContacts.Name = "_listContacts";
-            this._listContacts.Size = new System.Drawing.Size(292, 426);
+            this._listContacts.Size = new System.Drawing.Size(227, 426);
             this._listContacts.TabIndex = 0;
+            // 
+            // sendMessageToolStripMenuItem
+            // 
+            this.sendMessageToolStripMenuItem.Name = "sendMessageToolStripMenuItem";
+            this.sendMessageToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.sendMessageToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.sendMessageToolStripMenuItem.Text = "&Send Message";
+            this.sendMessageToolStripMenuItem.Click += new System.EventHandler(this.OnSendMessage);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // _txtSentMessages
+            // 
+            this._txtSentMessages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._txtSentMessages.Location = new System.Drawing.Point(0, 0);
+            this._txtSentMessages.Multiline = true;
+            this._txtSentMessages.Name = "_txtSentMessages";
+            this._txtSentMessages.ReadOnly = true;
+            this._txtSentMessages.Size = new System.Drawing.Size(363, 426);
+            this._txtSentMessages.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(399, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "SENT MESSAGES";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(579, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -165,6 +210,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -186,6 +233,10 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListBox _listContacts;
+        private System.Windows.Forms.ToolStripMenuItem sendMessageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.TextBox _txtSentMessages;
+        private System.Windows.Forms.Label label1;
     }
 }
 

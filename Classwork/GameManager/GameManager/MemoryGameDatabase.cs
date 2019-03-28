@@ -12,42 +12,6 @@ namespace GameManager
     public class MemoryGameDatabase : GameDatabase //,IotherInterface
     {
 
-        public MemoryGameDatabase()
-        {
-            //var game = new Game();
-            //game.Name = "DOOM";
-            //game.Description = "Space Marine";
-            //game.Price = 49.99M;
-
-            //Object initializer
-            //var game = new Game() {
-            //    Name = "DOOM",
-            //    Description = "Space Marine",
-            //    Price = 49.99M
-            //};
-            //Add(game);
-
-            //game = new Game() { Name = "Oblivion", Description = "Medieval", Price = 89.99M };
-            //Add(game);
-
-            //Add(new Game() {
-            //    Name = "Fallout 76",
-            //    Description = "Failed MMO",
-            //    Price = 0.01M
-            //});
-
-            //Collection initializer
-            var games = new []
-                {
-                    new Game() { Name = "DOOM", Description = "Space Marine", Price = 49.99M },
-                    new Game() { Name = "Oblivion", Description = "Medieval", Price = 89.99M },
-                    new Game() { Name = "Fallout 76", Description = "Failed MMO", Price = 0.01M }
-                };
-
-            foreach (var game in games)
-                AddCore(game);
-        }
-
         protected override Game AddCore( Game game )
         {
             game.Id = ++_nextId;

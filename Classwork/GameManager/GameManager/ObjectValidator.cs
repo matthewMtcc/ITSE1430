@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*
+ * ITSE 1430
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,11 +10,23 @@ using System.Threading.Tasks;
 
 namespace GameManager
 {
-    public class ObjectValidator
+    /// <summary>Helper class to validate <see cref="IValidatableObject"/> types.</summary>
+    public static class ObjectValidator
     {
-        public void Validate( IValidatableObject value )
+        //prevents instance from being created
+        //private ObjectValidator()
+        //{ }
+        /// <summary>Validates an object.</summary>
+        /// <param name="value">The object to validate.</param>
+        /// <exception cref="ValidationException">The value is invalid.</exception>
+        public static void Validate( IValidatableObject value )
         {
             Validator.ValidateObject(value, new ValidationContext(value));
+
+            //No access to instance members
+            //_duh = 10;
         }
+
+        //private int _duh;
     }
 }

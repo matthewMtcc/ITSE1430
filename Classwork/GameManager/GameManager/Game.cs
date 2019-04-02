@@ -10,8 +10,11 @@ namespace GameManager
         /// <summary>Gets or sets the name of the game.</summary>
         public string Name
         {
-            get { return _name ?? ""; }
-            set { _name = value ?? ""; }
+            //expression body members
+            //get { return _name ?? ""; }
+            get => _name ?? "";
+            //set { _name = value ?? ""; }
+            set => _name = value ?? "";
         }
 
         public int Id { get; set; }
@@ -19,9 +22,17 @@ namespace GameManager
         /// <summary>Gets or sets the description.</summary>
         public string Description
         {
-            get { return _description ?? ""; }
-            set { _description = value; }
+            get => _description ?? "";
+            set => _description = value;
         }
+
+        /*public bool IsCoolGame
+        {
+            get { return Price < 59.99M; }
+        }*/
+        public bool IsCoolGame => Price < 59.99M;
+
+        //private bool IsCoolGame2 = true;
 
         /// <summary>Gets or sets the price.</summary>
         public decimal Price { get; set; }
@@ -34,10 +45,11 @@ namespace GameManager
 
         /// <summary>Converts the object to a string.</summary>
         /// <returns>The string equivalent.</returns>
-        public override string ToString()
-        {
-            return Name;
-        }
+        //public override string ToString()
+        //{
+        //    return Name;
+        //}
+        public override string ToString() => Name;
 
         /// <summary>Validates the object.</summary>
         /// <returns>true if valid or false otherwise.</returns>

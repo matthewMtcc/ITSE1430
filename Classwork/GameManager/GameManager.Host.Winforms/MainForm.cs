@@ -194,6 +194,10 @@ namespace GameManager.Host.Winforms
         {
             var value = _listGames.SelectedItem;
 
+            //Typesafe conversion
+            //_listGames.Items.OfType<Game>(); //as
+            //_listGames.Items.Cast<Game>(); //(T)
+
             //C-style cast - don't do this
             //var game = (Game)value;
 

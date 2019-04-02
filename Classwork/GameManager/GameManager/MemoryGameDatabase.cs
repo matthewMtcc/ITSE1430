@@ -51,18 +51,12 @@ namespace GameManager
         //public Game[] GetAll()
         protected override IEnumerable<Game> GetAllCore()
         {
-            //var temp = new List<Game>();
-            //foreach (var item in _items)
-            //    temp.Add(Clone(item));
-
-            //return temp.ToArray();
-
-            //if (_items.Count == 0)
-            //    yield return null;
-
             //Use iterator
-            foreach (var item in _items)
-                yield return Clone(item);
+            //foreach (var item in _items)
+            //    yield return Clone(item);
+            //return items
+
+            return _items.Select(Clone);
         }
 
         private void Clone( Game target, Game source )
@@ -84,12 +78,44 @@ namespace GameManager
         }
         private int GetIndex( int id )
         {
-            for (var index = 0; index < _items.Count; ++index)
-                if (_items[index]?.Id == id)
-                    return index;
+            #region Comments
+
+            //Capturing parameters/locals needs to be done using a temp type - compiler will generate this code            
+            //var tempType = new IsIdType() { Id = id };
+            //var game = _items.Where(tempType.IsId).FirstOrDefault();
+
+            //Can use lambda anywhere you need a function object, must be explicit on type
+            //Func<Game, bool> isId = (g) => g.Id == id;
+
+            //Capture problems
+            //var games = _items.Where(g => g.Id == id);
+            //foreach (var game in games)
+            //{
+            //    ++id;
+            //};
+            #endregion
+
+            //_items = all games
+            // .Where = filters down to only those matching IsId
+            // .FirstOrDefault = returns first of filtered items, if any
+            var game = _items.Where(g => g.Id == id).FirstOrDefault();
+
+            //Demoing anonymous type
+            //var games = from g in _items
+            //            where g.Id == id
+            //            select new { Id = g.Id, Name = g.Name };            
+            //var game = games.FirstOrDefault();            
+            if (game != null)
+                return _items.IndexOf(game);
+
+            //Forget this
+            //for (var index = 0; index < _items.Count; ++index)
+            //    if (_items[index]?.Id == id)
+            //        return index;
 
             return -1;
         }
+
 
 
         //Arrays are so 90s

@@ -107,6 +107,7 @@ namespace ContactManager.UI
                 return;
 
             form.CurrentContact = contact;
+            form.Text = "Edit Contact";
 
             while(true)
             {

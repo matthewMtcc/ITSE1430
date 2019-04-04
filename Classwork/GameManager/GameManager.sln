@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameManager.Host.Winforms",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameManager", "GameManager\GameManager.csproj", "{CEF4F26E-B9F5-4383-901D-77DA02B4D4F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameManager.FileSystem", "GameManager.FileSystem\GameManager.FileSystem.csproj", "{94619F07-7116-47D9-A9A3-FBD1133F413C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CEF4F26E-B9F5-4383-901D-77DA02B4D4F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEF4F26E-B9F5-4383-901D-77DA02B4D4F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEF4F26E-B9F5-4383-901D-77DA02B4D4F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94619F07-7116-47D9-A9A3-FBD1133F413C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94619F07-7116-47D9-A9A3-FBD1133F413C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94619F07-7116-47D9-A9A3-FBD1133F413C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94619F07-7116-47D9-A9A3-FBD1133F413C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

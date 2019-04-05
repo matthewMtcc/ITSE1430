@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace ContactManager.BL
 {
+    //static helper
     static public class ObjectValidator
     {
         static public void Validate( IValidatableObject value )

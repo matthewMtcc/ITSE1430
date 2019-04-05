@@ -159,6 +159,7 @@ namespace ContactManager.UI
 
         }
 
+        //event handler for message send 
         private void OnSendMessage( object sender, EventArgs e )
         {
             var contact = GetSelectedContact();

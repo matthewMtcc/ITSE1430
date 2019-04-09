@@ -82,6 +82,12 @@ namespace GameManager.FileSystem
                     if (game.Id == id)
                         return game;
                 };
+                
+                //NEVER do this
+                //var x = 10l;
+                //reader.Close();
+                //reader.Close();
+                //reader.Dispose();
 
                 return null;
             };

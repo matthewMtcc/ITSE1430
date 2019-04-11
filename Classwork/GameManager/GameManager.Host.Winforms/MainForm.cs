@@ -38,18 +38,19 @@ namespace GameManager.Host.Winforms
 
         protected override void OnLoad( EventArgs e )
         {
-            //load connection string 
+            base.OnLoad(e);
+
+            //Load connection string from config
             var connString = ConfigurationManager.ConnectionStrings["database"];
             _games = new SqlGameDatabase(connString.ConnectionString);
 
-            base.OnLoad(e);
+            //Seed if database is empty
+            //var games = _games.GetAll();
+            //if (games.Count() == 0)
+            //    //SeedDatabase.Seed(_games);
+            //    _games.Seed();
 
-            //seed if database is empty 
-            var games = _games.GetAll();
-            if (games.Count() == 0)
-                //SeedDatabase.Seed(_games);
-                _games.Seed();
-                BindList();
+            BindList();
         }
 
         private void BindList()

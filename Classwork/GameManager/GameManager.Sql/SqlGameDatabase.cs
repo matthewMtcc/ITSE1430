@@ -111,7 +111,46 @@ namespace GameManager.Sql
 
         protected override Game GetCore( int id )
         {
-            return GetAllCore().FirstOrDefault(g => g.Id == id);
+            using (var conn = GetConnection())
+            {
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "GetGames";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    //0 is the ordinal
+                    var gameId = reader.GetInt32(0);
+                    if (gameId == id)
+                    {
+                        reader.GetOrdinal("Name");
+
+                        return new Game() {
+                            Id = gameId,
+                            Name = GetString(reader, "Name"),
+                            Description = GetString(reader, "Description"),
+                            Price = reader.GetFieldValue<decimal>(3),
+                            Owned = Convert.ToBoolean(reader.GetValue(4)),
+                            Completed = Convert.ToBoolean(reader.GetValue(5)),
+
+                        };
+                    };
+                };
+            };
+            return null;
+        }
+
+        private string GetString( IDataReader reader, string name )
+        {
+            var ordinal = reader.GetOrdinal(name);
+
+            if (reader.IsDBNull(ordinal))
+                return "";
+
+            return reader.GetString(ordinal);
         }
 
 

@@ -1,5 +1,7 @@
 /*
+ * Matthew McNatt
  * ITSE 1430
+ * 4/18/2019
  */
 using System;
 using System.Collections.Generic;
@@ -40,7 +42,7 @@ namespace Nile
             return Name;
         }
 
-        //implements IValidatableObject interface
+        /// <summary>Implements The Ivalidateble object Interface.</summary>
         public IEnumerable<ValidationResult> Validate( ValidationContext validationContext )
         {
             var items = new List<ValidationResult>();
@@ -49,7 +51,7 @@ namespace Nile
             if (String.IsNullOrEmpty(Name))
                 items.Add(new ValidationResult("Name is required.", new[] { nameof(Name) }));
 
-            if (Price <= 0)
+            if (Price < 0)
                 items.Add(new ValidationResult("Price must be >= 0.", new[] { nameof(Price) }));
 
             if (Id < 0)

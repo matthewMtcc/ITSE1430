@@ -1,5 +1,7 @@
 /*
+ * Matthew McNatt
  * ITSE 1430
+ * 4/17/2019
  */
 using System;
 using System.Configuration;
@@ -110,6 +112,9 @@ namespace Nile.Windows
 			//Don't continue with key
             e.SuppressKeyPress = true;
         }
+        #endregion
+
+        #region Private Members
 
         private void OnAboutClick( object sender, EventArgs e )
         {
@@ -121,9 +126,6 @@ namespace Nile.Windows
         {
             MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        #endregion
-
-        #region Private Members
 
         private void DeleteProduct ( Product product )
         {

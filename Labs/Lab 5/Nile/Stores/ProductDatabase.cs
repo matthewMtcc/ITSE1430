@@ -1,5 +1,7 @@
 /*
+ * Matthew McNatt
  * ITSE 1430
+ * 4/17/2019
  */
 using System;
 using System.Collections.Generic;
@@ -34,7 +36,7 @@ namespace Nile.Stores
         /// <returns>The product, if it exists.</returns>
         public Product Get ( int id )
         {
-            if(id >= 0)
+            if(id > 0)
             throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
 
             return GetCore(id);

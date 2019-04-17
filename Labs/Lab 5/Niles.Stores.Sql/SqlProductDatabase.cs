@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Matthew McNatt
+ * ITSE 1430
+ * 4/17/2019
+ */
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,13 +15,22 @@ using Nile.Stores;
 
 namespace Niles.Stores.Sql
 {
+    /// <summary>Implementation of the Product Database class using a Sql database</summary>
     public class SqlProductDatabase : ProductDatabase
     {
-
+        #region Construction
+        /// <summary>Constructor that accepts a connection string to a Sql Database</summary>
         public SqlProductDatabase(string connectionString)
         {
             _connectionString = connectionString;
         }
+        #endregion
+
+        #region Protected Members
+
+        /// <summary>Adds a product.</summary>
+        /// <param name="product">The product to add.</param>
+        /// <returns>The added product.</returns>
         protected override Product AddCore( Product product )
         {
             using (var connection = GetConnection())
@@ -39,6 +53,8 @@ namespace Niles.Stores.Sql
 
         }
 
+        /// <summary>Gets all products.</summary>
+        /// <returns>The products.</returns>
         protected override IEnumerable<Product> GetAllCore()
         {
             var ds = new DataSet();
@@ -69,6 +85,8 @@ namespace Niles.Stores.Sql
             return Enumerable.Empty<Product>();
         }
 
+        /// <summary>Get a specific product.</summary>
+        /// <returns>The product, if it exists.</returns>
         protected override Product GetCore( int id )
         {
             using (var conn = GetConnection())
@@ -99,6 +117,8 @@ namespace Niles.Stores.Sql
             return null;
         }
 
+        /// <summary>Removes the product.</summary>
+        /// <param name="product">The product to remove.</param>
         protected override void RemoveCore( int id )
         {
             using (var conn = GetConnection())
@@ -116,6 +136,9 @@ namespace Niles.Stores.Sql
             };
         }
 
+        /// <summary>Updates a product.</summary>
+        /// <param name="product">The product to update.</param>
+        /// <returns>The updated product.</returns>
         protected override Product UpdateCore( Product existing, Product newItem )
         {
             using (var connection = GetConnection())
@@ -138,7 +161,9 @@ namespace Niles.Stores.Sql
 
             return newItem;
         }
+        #endregion
 
+        #region Private Members
         private SqlConnection GetConnection()
         {
             return new SqlConnection(_connectionString);
@@ -155,5 +180,6 @@ namespace Niles.Stores.Sql
         }
 
         private readonly string _connectionString;
+        #endregion
     }
 }

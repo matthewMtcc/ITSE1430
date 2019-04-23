@@ -5,21 +5,26 @@ using System.ComponentModel.DataAnnotations;
 namespace GameManager
 {
     /// <summary>Represents a game.</summary>
-    public class Game :IValidatableObject
+    public class Game : IValidatableObject
     {
+        /// <summary>Gets or sets the unique ID of the game.</summary>
+        public int Id { get; set; }
+
         /// <summary>Gets or sets the name of the game.</summary>
+        [RequiredAttribute(AllowEmptyStrings = false)]
         public string Name
         {
-            //expression body members
+            //Expression bodied members
             //get { return _name ?? ""; }
             get => _name ?? "";
             //set { _name = value ?? ""; }
             set => _name = value ?? "";
         }
 
-        public int Id { get; set; }
-
         /// <summary>Gets or sets the description.</summary>
+        //[Required]
+        //[Description("Hello")]
+        //[Required, Description("Hello")]
         public string Description
         {
             get => _description ?? "";
@@ -35,6 +40,7 @@ namespace GameManager
         //private bool IsCoolGame2 = true;
 
         /// <summary>Gets or sets the price.</summary>
+        [Range(0, Double.MaxValue, ErrorMessage = "Price must be >= 0.")]
         public decimal Price { get; set; }
 
         /// <summary>Determines if the game is owned.</summary>
@@ -48,44 +54,22 @@ namespace GameManager
         //public override string ToString()
         //{
         //    return Name;
-        //}
+        //}        
         public override string ToString() => Name;
-
-        /// <summary>Validates the object.</summary>
-        /// <returns>true if valid or false otherwise.</returns>
-        //public bool Validate( /* Game this */ )
-        //{
-        //    //Redundant use of this
-        //    //var str = this.Name;
-
-        //    //Name is required
-        //    if (String.IsNullOrEmpty(Name))
-        //        return false;
-
-        //    //Price >= 0
-        //    if (Price < 0)
-        //        return false;
-
-        //    //Only if you need to pass the instance to somebody else
-        //    //MyType.Foo(this);
-
-        //    return true;
-        //}
 
         public IEnumerable<ValidationResult> Validate( ValidationContext validationContext )
         {
             var items = new List<ValidationResult>();
 
-            //Name is required
-            if (String.IsNullOrEmpty(Name))
-                items.Add(new ValidationResult("Name is required.", new[] { nameof(Name) } ));
+            ////Name is required
+            //if (String.IsNullOrEmpty(Name))
+            //    items.Add(new ValidationResult("Name is required.", new[] { nameof(Name) }));
 
             //Price >= 0
-            if (Price < 0)
-                items.Add(new ValidationResult("Price must be >= 0.", new[] { nameof(Price) }));
+            //if (Price < 0)
+            //    items.Add(new ValidationResult("Price must be >= 0.", new[] { nameof(Price) }));
 
             return items;
-
         }
 
         #region Private Members

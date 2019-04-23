@@ -21,7 +21,7 @@ namespace GameManager
         /// <exception cref="ValidationException">The value is invalid.</exception>
         public static void Validate( IValidatableObject value )
         {
-            Validator.ValidateObject(value, new ValidationContext(value));
+            Validator.ValidateObject(value, new ValidationContext(value), true);
 
             //No access to instance members
             //_duh = 10;

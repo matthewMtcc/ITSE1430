@@ -1,7 +1,7 @@
 /*
  * Matthew McNatt
  * ITSE 1430
- * 4/17/2019
+ * Last Modified: 4/23/2019
  */
 using System;
 using System.Configuration;
@@ -21,6 +21,8 @@ namespace Nile.Windows
         }
         #endregion
 
+        #region Event Handlers
+
         protected override void OnLoad( EventArgs e )
         {
             base.OnLoad(e);
@@ -33,8 +35,6 @@ namespace Nile.Windows
             UpdateList();
         }
 
-        #region Event Handlers
-        
         private void OnFileExit( object sender, EventArgs e )
         {
             Close();

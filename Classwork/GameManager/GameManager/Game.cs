@@ -156,6 +156,8 @@ namespace GameManager
         //public string[] genres = new string[10];
         //private decimal realPrice = Price;
         #endregion
+
+        //notes: web development is big, mostly language. 
     }
 }
 

@@ -61,6 +61,8 @@ namespace GameManager
         {
             var items = new List<ValidationResult>();
 
+            if (Price > 10000)
+                items.Add(new ValidationResult("Price too expensive.", new[] {nameof(Price) }));
             ////Name is required
             //if (String.IsNullOrEmpty(Name))
             //    items.Add(new ValidationResult("Name is required.", new[] { nameof(Name) }));
@@ -82,6 +84,9 @@ namespace GameManager
         #region Demo Code Only
 
         #region Constructors
+
+        //func<i, 2, return> =>
+        //action is foid
 
         //Default, no return type
         // 1) Cannot be called directly

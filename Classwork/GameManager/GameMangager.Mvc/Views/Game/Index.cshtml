@@ -1,13 +1,15 @@
 ﻿@model IEnumerable<GameManager.Game>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "My Games";
+
+    var title = "Hello";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add", "Create")
 </p>
 <table class="table">
     <tr>
@@ -54,7 +56,6 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>

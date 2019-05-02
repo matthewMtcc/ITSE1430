@@ -18,6 +18,9 @@ namespace GameMangager.Mvc.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+            ViewBag.Title = "Home";
+
+            var title = ViewBag.Title;
 
             return View();
         }
